@@ -5,3 +5,4 @@ test/file11
 test/file12
 test/file111
 test/file1X2
+*.a

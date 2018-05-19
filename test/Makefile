@@ -1,10 +1,13 @@
 CC    = gcc
 FLAGS = -Wall -Wextra -pedantic
-EXEC  = file1 file11 file12 file111 file1X2
+EXE   = file1 file11 file12 file111 file1X2
+OBJ   = file1.o file11.o file12.o file111.o file1X2.o
 
-.PHONY = all clean ultraclean
+.PHONY = exe obj clean ultraclean
 
-all: $(EXEC)
+exe: $(EXE)
+
+obj: $(OBJ)
 
 #################### FILE1 ####################
 file1: file1.o
@@ -43,7 +46,7 @@ file1X2.o: file1X2.c file1X2.h file11.h file12.h file1.h
 
 #################### OTHERS ###################
 clean:
-	rm -f *.o
+	rm -f $(OBJ) 
 
 ultraclean:
-	rm -f *.o $(EXEC)
+	rm -f $(OBJ) $(EXE)

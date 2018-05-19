@@ -7,7 +7,7 @@ void printHello() {
     printf("Hello World!\n");
 }
 
-int main() {
-    printHello();
-    return 0;
-}
+/* int main() { */
+/*     printHello(); */
+/*     return 0; */
+/* } */
