@@ -80,7 +80,6 @@ def main():
                         help="the name of the output file (default: static_library.json)")
     slib    = parser.parse_args().slib    # The name of the static library
     outfile = parser.parse_args().o       # The name of the output file
-    print(parser.parse_args())
     if (outfile == None):
         try:
             outfile = slib[:-2] + ".json" # "slib.json" by default
