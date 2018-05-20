@@ -1,18 +1,29 @@
 class ObjectFile:
+    """Define an object file by its name, its dependencies and its unresolved
+    local (located in the static library) and global symbols.
+    """
     def __init__(self, filename):
-        self.filename     = filename
-        self.unresolved   = []
-        self.dependencies = []
+        self.filename     = filename    # The name of the object file
+        self.unresLocal   = []          # List of unresolved but local symbols
+        self.unresGlobal  = []          # List of other unresolved symbols
+        self.dependencies = []          # List of the required object files
 
     def getFilename(self):
         return self.filename
 
-    def setUnresolved(self, unresolved):
-        for unres in unresolved:
-            self.unresolved.append(unres)
+    def setUnresLocal(self, unresLocal):
+        for unres in unresLocal:
+            self.unresLocal.append(unres)
 
-    def getUnresolved(self):
-        return self.unresolved
+    def getUnresLocal(self):
+        return self.unresLocal
+
+    def setUnresGlobal(self, unresGlobal):
+        for unres in unresGlobal:
+            self.unresGlobal.append(unres)
+
+    def getUnresGlobal(self):
+        return self.unresGlobal
 
     def setDependencies(self, dependencies):
         for dep in dependencies:
