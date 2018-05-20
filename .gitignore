@@ -1,8 +1,13 @@
+__pycache__/
 sdep
+*.swp
+*.json
 test/*.o
 test/file1
 test/file11
 test/file12
 test/file111
 test/file1X2
-*.a
+
+libcrypt.a
+libutil.a
