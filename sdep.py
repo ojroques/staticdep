@@ -67,7 +67,10 @@ def main():
     slib    = parser.parse_args().slib
     outfile = parser.parse_args().o
     if (outfile == None):
-        outfile = slib[:-2] + ".json"
+        try:
+            outfile = slib[:-2] + ".json"
+        except IndexError:
+            outfile = "out.json"
 
     # Call "ar -t" on the static library, which lists its content
     try:
