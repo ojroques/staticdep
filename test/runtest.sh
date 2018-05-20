@@ -1,3 +1,4 @@
 #!/bin/bash
 
-python3 ../sdep.py libtest.a
+execname=staticdep.py
+python3 ../$execname libtest.a
