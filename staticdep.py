@@ -63,8 +63,12 @@ def saveJSON(outfile):
         attrdict["Unresolved global symbols"] = objectFile.getUnresGlobal()
         objdict[objectFile.getFilename()] = attrdict
 
-    with open(outfile, 'w') as out:
-        json.dump(objdict, out, indent=4)
+    try:
+        with open(outfile, 'w') as out:
+            json.dump(objdict, out, indent=4)
+    except IOError as e:
+        print("I/O error on '{0}': {1}".format(outfile, e.strerror))
+        return
 
 def main():
     """The main function."""
@@ -72,10 +76,11 @@ def main():
     parser = argparse.ArgumentParser(description="List the object file dependencies of a static library")
     parser.add_argument("slib", metavar="static_library",
                         help="the static library to analyze")
-    parser.add_argument("-o", nargs=1, metavar="outfile",
+    parser.add_argument("-o", metavar="outfile",
                         help="the name of the output file (default: static_library.json)")
     slib    = parser.parse_args().slib    # The name of the static library
     outfile = parser.parse_args().o       # The name of the output file
+    print(parser.parse_args())
     if (outfile == None):
         try:
             outfile = slib[:-2] + ".json" # "slib.json" by default
@@ -85,8 +90,8 @@ def main():
     # Call "ar -t" on the static library, which lists its content
     try:
         ar_output = subprocess.check_output(["ar", "-t", slib]).decode()
-    except subprocess.CalledProcessError:
-        print("Could not execute 'ar -t {0}'".format(slib))
+    except subprocess.CalledProcessError as e:
+        print("Could not execute '{0}'".format(' '.join(e.cmd)))
         return
     ar_output = ar_output.splitlines()
     getContent(ar_output)    # Create the list of object file
@@ -94,8 +99,8 @@ def main():
     # Call "nm -s" on the static library, which lists symbols and index of the archive
     try:
         nm_output = subprocess.check_output(["nm", "-s", slib]).decode()
-    except subprocess.CalledProcessError:
-        print("Could not execute 'nm -s {0}'".format(slib))
+    except subprocess.CalledProcessError as e:
+        print("Could not execute '{0}'".format(' '.join(e.cmd)))
         return
     nm_output = nm_output.splitlines()[1:]
     buildIndex(nm_output)    # Create the index which associates symbols to their location
