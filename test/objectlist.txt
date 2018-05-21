@@ -1,0 +1,4 @@
+file1.o
+file11.o
+file12.o
+file1X2.o
