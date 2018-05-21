@@ -73,10 +73,31 @@ def saveJSON(slib, outfile):
     try:
         with open(outfile, 'w') as out:
             json.dump(objdict, out, indent=4)
-            print("JSON result of '{0}' saved as '{1}'".format(slib, outfile))
+            print("JSON result of '{0}' analysis saved as '{1}'".format(slib, outfile))
     except IOError as e:
         print("I/O error on '{0}': {1}".format(outfile, e.strerror))
         return
+
+def printSummary(slib):
+    """Print a summary of the analysis."""
+    nbObj     = len(objectFiles)   # The static library name is not counted
+    # The longest name length to adjust spacing for aesthetic purpose
+    maxLength = max([len(obj.getFilename()) for obj in objectFiles])
+    maxLength = max(maxLength, len("OBJ_FILE"))
+
+    print("\nSUMMARY OF ANALYSIS")
+    print("The static library '{0}' contains {1} object files:".format(slib, nbObj))
+    print("- OBJ_FILE" + " "*(maxLength - len("OBJ_FILE")) + " <- DEPENDENCIES")
+    for objectFile in objectFiles:
+        filename     = objectFile.getFilename()
+        dependencies = objectFile.getDependencies()
+        line         = "- {0}".format(filename) + " " * (maxLength - len(filename))
+        line        += " <- "
+        if (dependencies == []):
+            line += "No dependencies"
+        else:
+            line += ", ".join(dependencies)
+        print(line)
 
 def main():
     """The main function."""
@@ -85,7 +106,9 @@ def main():
     parser.add_argument("slib", metavar="static_library",
                         help="the static library to analyze")
     parser.add_argument("-o", metavar="outfile",
-                        help="the name of the output file (default: static_library.json)")
+                        help="name of the output file (default: static_library.json)")
+    parser.add_argument("-s", action="store_true",
+                        help="print a summary of the analysis")
     slib    = parser.parse_args().slib    # Name of the static library
     outfile = parser.parse_args().o       # Name of the output file
     if (outfile == None):
@@ -121,6 +144,10 @@ def main():
 
     # Finally save the JSON in a file
     saveJSON(slib, outfile)
+
+    # If the '-s' option is set, also print a summary of the analysis
+    if (parser.parse_args().s):
+        printSummary(slib)
 
 
 main()

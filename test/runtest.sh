@@ -6,7 +6,7 @@ libtest=libtest
 objectlist=objectlist.txt
 
 echo "ANALYZING THE STATIC LIBRARY"
-python3 ../$analyze $libtest.a
+python3 ../$analyze $libtest.a -s
 echo
 
 echo "LISTING OBJECT FILES WITHOUT DEPENDENCIES"
