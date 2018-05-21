@@ -7,14 +7,16 @@ index = {}          # Symbols as keys and their location as value
 objectFiles = []    # List of objects files included in the static lib
 
 def getContent(ar_output):
-    """Retrieve the files listed in the archive. For each file,
+    """Retrieve the object files listed in the archive. For each file,
     create a new ObjectFile and add it to the global list of object files.
     """
     for filename in ar_output:
         objectFiles.append(ObjectFile(filename))
 
 def buildIndex(nm_output):
-    """Build the archive index from the output of nm."""
+    """Build the archive index from the output of nm. This index contains
+    each (local) symbol and its location.
+    """
     for line in nm_output:
         if (line == ""):
             break
@@ -25,13 +27,13 @@ def buildIndex(nm_output):
 
 def getDependencies(nm_output, filename):
     """List object files on which 'filename' depends on by searching for
-    unresolved symbols in 'nm' output.
+    unresolved symbols in 'nm' output for 'filename'.
     """
     dependencies = set()    # Required object files
     unresLocal   = []       # Unresolved local (in the static lib) symbols
     unresGlobal  = []       # Unresolved global symbols
 
-    # Get line number of the object file in nm output
+    # Get line number in the nm output of the object file
     try:
         i0 = nm_output.index(filename + ":")
     except ValueError:
@@ -53,19 +55,25 @@ def getDependencies(nm_output, filename):
 
     return (list(dependencies), unresLocal, unresGlobal)
 
-def saveJSON(outfile):
+def saveJSON(slib, outfile):
     """Build the JSON from the object list then save it in a file."""
     objdict = {}
+
+    # First, save the name of the static library
+    objdict["Static library"] = slib
+    # Then for each object file, save dependencies and unresolved symbols
     for objectFile in objectFiles:
         attrdict = {}
         attrdict["Dependencies"]              = objectFile.getDependencies()
         attrdict["Unresolved local symbols"]  = objectFile.getUnresLocal()
         attrdict["Unresolved global symbols"] = objectFile.getUnresGlobal()
-        objdict[objectFile.getFilename()] = attrdict
+        objdict[objectFile.getFilename()]     = attrdict
 
+    # Write the JSON representation in a text file
     try:
         with open(outfile, 'w') as out:
             json.dump(objdict, out, indent=4)
+            print("JSON result of '{0}' saved as '{1}'".format(slib, outfile))
     except IOError as e:
         print("I/O error on '{0}': {1}".format(outfile, e.strerror))
         return
@@ -78,8 +86,8 @@ def main():
                         help="the static library to analyze")
     parser.add_argument("-o", metavar="outfile",
                         help="the name of the output file (default: static_library.json)")
-    slib    = parser.parse_args().slib    # The name of the static library
-    outfile = parser.parse_args().o       # The name of the output file
+    slib    = parser.parse_args().slib    # Name of the static library
+    outfile = parser.parse_args().o       # Name of the output file
     if (outfile == None):
         try:
             outfile = slib[:-2] + ".json" # "slib.json" by default
@@ -112,7 +120,7 @@ def main():
         objectFile.setDependencies(dependencies)
 
     # Finally save the JSON in a file
-    saveJSON(outfile)
+    saveJSON(slib, outfile)
 
 
 main()
