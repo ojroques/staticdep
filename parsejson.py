@@ -1,7 +1,6 @@
 import argparse
 import json
 import copy
-from objectfile import ObjectFile    # A class to represent an object file
 
 def printNodes(staticdep):
     """Print object files in the given static library that do not depend on any
