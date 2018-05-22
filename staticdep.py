@@ -1,12 +1,53 @@
 import subprocess
 import argparse
 import json
-from objectfile import ObjectFile    # A class to represent an object file
 
 index = {}          # Symbols as keys and their location as value
 objectFiles = []    # List of objects files included in the static lib
 
-def getContent(ar_output):
+
+class ObjectFile:
+    """Define an object file by its name, its dependencies and its unresolved
+    local (located in the static library) and global symbols.
+    """
+    def __init__(self, filename):
+        self.filename     = filename    # The name of the object file
+        self.unresLocal   = []          # List of unresolved but local symbols
+        self.unresGlobal  = []          # List of other unresolved symbols
+        self.dependencies = []          # List of the required object files
+
+    def getFilename(self):
+        return self.filename
+
+    def setUnresLocal(self, unresLocal):
+        for unres in unresLocal:
+            self.unresLocal.append(unres)
+
+    def getUnresLocal(self):
+        return self.unresLocal
+
+    def setUnresGlobal(self, unresGlobal):
+        for unres in unresGlobal:
+            self.unresGlobal.append(unres)
+
+    def getUnresGlobal(self):
+        return self.unresGlobal
+
+    def setDependencies(self, dependencies):
+        for dep in dependencies:
+            self.dependencies.append(dep)
+
+    def getDependencies(self):
+        return self.dependencies
+
+    def __str__(self):
+        return self.filename
+
+    def __repr__(self):
+        return self.filename
+
+
+def buildObjectFiles(ar_output):
     """Retrieve the object files listed in the archive. For each file,
     create a new ObjectFile and add it to the global list of object files.
     """
@@ -20,12 +61,11 @@ def buildIndex(nm_output):
     for line in nm_output:
         if (line == ""):
             break
-        elif (line != "Archive index:"):
-            splittedLine = line.split()
-            symbolName, objectFile = splittedLine[0], splittedLine[2]
-            index[symbolName] = objectFile
+        splittedLine = line.split()
+        symbolName, objectFile = splittedLine[0], splittedLine[2]
+        index[symbolName] = objectFile
 
-def getDependencies(nm_output, filename):
+def getSymbols(nm_output, filename):
     """List object files on which 'filename' depends on by searching for
     unresolved symbols in 'nm' output for 'filename'.
     """
@@ -124,7 +164,7 @@ def main():
         print("Could not execute '{0}'".format(' '.join(e.cmd)))
         return
     ar_output = ar_output.splitlines()
-    getContent(ar_output)    # Create the list of object file
+    buildObjectFiles(ar_output)    # Build the list of object file
 
     # Call "nm -s" on the static library, which lists symbols and index of the archive
     try:
@@ -132,12 +172,12 @@ def main():
     except subprocess.CalledProcessError as e:
         print("Could not execute '{0}'".format(' '.join(e.cmd)))
         return
-    nm_output = nm_output.splitlines()[1:]
+    nm_output = nm_output.splitlines()[2:]    # Index starts at 2 to ignore a blank line and a header
     buildIndex(nm_output)    # Create the index which associates symbols to their location
 
     # Iterate over the object files to create associated lists
     for objectFile in objectFiles:
-        dependencies, unresLocal, unresGlobal = getDependencies(nm_output, objectFile.getFilename())
+        dependencies, unresLocal, unresGlobal = getSymbols(nm_output, objectFile.getFilename())
         objectFile.setUnresLocal(unresLocal)
         objectFile.setUnresGlobal(unresGlobal)
         objectFile.setDependencies(dependencies)
