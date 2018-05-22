@@ -1,5 +1,5 @@
 # TODO List
 
-* Verify if a list of object is complete
 * Add a *Resolved symbols* field to the ObjectFile class
+* Comment `verify()` in `parsejson.py`
 * Edit README.md

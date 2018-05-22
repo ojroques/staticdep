@@ -131,10 +131,11 @@ def printSummary(slib):
 
     print("SUMMARY OF ANALYSIS")
     print("The static library '{0}' contains {1} object files:".format(slib, nbObj))
-    print("- OBJ_FILE" + " "*(maxLength - len("OBJ_FILE")) + " <- DEPENDENCIES")
+    print("  OBJ_FILE" + " "*(maxLength - len("OBJ_FILE")) + " <- DEPENDENCIES")
     for objectFile in objectFiles:
         filename     = objectFile.getFilename()
         dependencies = objectFile.getDependencies()
+        # Build the line to be print
         line         = "- {0}".format(filename) + " " * (maxLength - len(filename))
         line        += " <- "
         if (dependencies == []):
