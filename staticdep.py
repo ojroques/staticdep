@@ -147,7 +147,8 @@ def printSummary(slib):
 def main():
     """The main function."""
     # Parse the argument line
-    parser = argparse.ArgumentParser(description="List the object file dependencies of a static library")
+    parser = argparse.ArgumentParser(description=
+                                     "List the object file dependencies of a static library")
     parser.add_argument("slib", metavar="static_library",
                         help="the static library to analyze")
     parser.add_argument("-o", metavar="outfile",

@@ -8,25 +8,33 @@ def printNodes(staticdep):
     slibContent = staticdep["Content"]   # Content of the static library
     totalObj    = len(slibContent)       # Number of object file in the static library
     nbIndepObj  = 0                      # Number of independent object files
-    print("Object files in '{0}' that do not depend on any others are:".format(staticdep["Static library"]))
+    print("Object files in '{0}' that do not depend on any others are:"
+          .format(staticdep["Static library"]))
     for objectName, value in slibContent.items():
         if (value['Dependencies'] == []):
             nbIndepObj += 1
             print("- " + objectName)
-    print("which represents {0}/{1} of all object files or {2:2.0f}%.".format(nbIndepObj, totalObj, (nbIndepObj / totalObj) * 100))
+    print("which represents {0}/{1} of all object files or {2:2.0f}%."
+          .format(nbIndepObj, totalObj, (nbIndepObj / totalObj) * 100))
 
 def verify(staticdep, objectlist, objectFiles):
     """Verify that there are no missing dependencies in a list of object files."""
-    slibContent     = staticdep["Content"]
+    slibContent     = staticdep["Content"]    # Content of the static library
+    # The longest name length to adjust spacing for aesthetic purpose
     maxLength       = max([len(name) for name in slibContent.keys()])
     maxLength       = max(maxLength, len("OBJ_FILE"))
-    uncompleteObj   = {}
+    uncompleteObj   = {}    # Object files (keys) with missing dependencies (values)
 
-    print("Dependencies in '{0}' of object files listed in '{1}':".format(staticdep["Static library"], objectlist))
+    # First, print each object file in the list with their dependencies
+    # and find missing dependencies
+    print("Dependencies in '{0}' of object files listed in '{1}':"
+          .format(staticdep["Static library"], objectlist))
     print("  OBJ_FILE" + " "*(maxLength - len("OBJ_FILE")) + " <- DEPENDENCIES")
     for objectName in objectFiles:
         dependencies = slibContent[objectName]["Dependencies"]
+        # Set of missing dependencies (dependencies not in the object files list)
         difference   = set(dependencies) - set(objectFiles)
+        # If there are missing dependencies, save them and the object file name
         if difference:
             uncompleteObj[objectName] = difference
         # Build the line to be print
@@ -38,10 +46,12 @@ def verify(staticdep, objectlist, objectFiles):
             line += ", ".join(dependencies)
         print(line)
 
+    # Then print object files with their missing dependencies if there are any
     if uncompleteObj:
         print("This list of object files is UNCOMPLETE:")
         print("  OBJ_FILE" + " "*(maxLength - len("OBJ_FILE")) + " <- MISSING DEPENDENCIES")
         for objectName, missingDep in uncompleteObj.items():
+            # Build the line to be print
             line  = "- {0}".format(objectName) + " " * (maxLength - len(objectName))
             line += " <- "
             line += ", ".join(list(missingDep))
@@ -52,7 +62,9 @@ def verify(staticdep, objectlist, objectFiles):
 def main():
     """The main function."""
     # Parse the argument line
-    parser = argparse.ArgumentParser(description="Parse a JSON output file to print object files that do not depend on any others (default behavior) or verify if a list of object files is complete.")
+    parser = argparse.ArgumentParser(description="Parse a JSON output file to print object \
+                                     files that do not depend on any others (default behavior) \
+                                     or verify if a list of object files is complete.")
     parser.add_argument("jsonfile", metavar="json_file",
                         help="the JSON file to parse")
     parser.add_argument("-v", metavar="object_list",
@@ -60,10 +72,11 @@ def main():
     jsonfile   = parser.parse_args().jsonfile   # The name of the json output file
     objectlist = parser.parse_args().v          # List of object files
 
+    # Retrieve the JSON analysis file
     try:
         with open(jsonfile, 'r') as infile:
-            staticdep = json.load(infile)    # The loaded JSON file
-        if ("slib_analysis" not in staticdep):
+            staticdep = json.load(infile)         # Load the JSON file
+        if ("slib_analysis" not in staticdep):    # Check that format is correct
             raise json.JSONDecodeError("Not an analysis result", "", 0)
     except IOError as e:
         print("I/O error on '{0}': {1}".format(jsonfile, e.strerror))
@@ -72,9 +85,10 @@ def main():
         print("Not a valid JSON document: {0}".format(e.msg))
         return
 
-    if (objectlist == None):
+    # Decide what to print according to the given arguments
+    if (objectlist == None):    # Print independent object files
         printNodes(staticdep)
-    else:
+    else:                       # Else verify that a list of object files is complete
         try:
             objectFiles = []   # The list of object files to verify
             with open(objectlist, 'r') as objfile:
