@@ -6,14 +6,18 @@ def printNodes(staticdep):
     """Print object files in the given static library that do not depend on any
     other object files also contained in this library.
     """
-    nbIndepObj = 0                            # Number of independent object files
-    totalObj   = len(staticdep.keys()) - 1    # The static library name is not counted
+    slibContent = staticdep["Content"]   # Content of the static library
+    totalObj    = len(slibContent)       # Number of object file in the static library
+    nbIndepObj  = 0                      # Number of independent object files
     print("Object files in '{0}' that do not depend on any others are:".format(staticdep["Static library"]))
-    for objectName, value in staticdep.items():
-        if (objectName != "Static library" and value['Dependencies'] == []):
+    for objectName, value in slibContent.items():
+        if (value['Dependencies'] == []):
             nbIndepObj += 1
             print("- " + objectName)
     print("which represents {0}/{1} of all object files or {2:2.0f}%.".format(nbIndepObj, totalObj, (nbIndepObj / totalObj) * 100))
+
+def verify(staticdep, objectlist, objectFiles):
+    print("Dependencies in '{0}' of object files listed in '{1}':".format(staticdep["Static library"], objectlist))
 
 def main():
     """The main function."""
@@ -29,8 +33,13 @@ def main():
     try:
         with open(jsonfile, 'r') as infile:
             staticdep = json.load(infile)    # The loaded JSON file
+        if ("slib_analysis" not in staticdep):
+            raise json.JSONDecodeError("Not an analysis result", "", 0)
     except IOError as e:
         print("I/O error on '{0}': {1}".format(jsonfile, e.strerror))
+        return
+    except json.JSONDecodeError as e:
+        print("Not a valid JSON document: {0}".format(e.msg))
         return
 
     if (objectlist == None):
@@ -44,6 +53,7 @@ def main():
         except IOError as e:
             print("I/O error on '{0}': {1}".format(objectlist, e.strerror))
             return
+        verify(staticdep, objectlist, objectFiles)
 
 
 main()

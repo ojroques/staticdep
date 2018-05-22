@@ -5,14 +5,14 @@ parse=parsejson.py
 libtest=libtest
 objectlist=objectlist.txt
 
-echo "ANALYZING THE STATIC LIBRARY"
+echo "1. ANALYZE THE STATIC LIBRARY AND PRINT A SUMMARY"
 python3 ../$analyze $libtest.a -s
 echo
 
-echo "LISTING OBJECT FILES WITHOUT DEPENDENCIES"
+echo "2. LIST OBJECT FILES WITHOUT DEPENDENCIES"
 python3 ../$parse $libtest.json
 echo
 
-echo "VERYFYING THAT A LIST OF OBJECT FILES IS COMPLETE"
+echo "3. VERIFY THAT A LIST OF OBJECT FILES IS COMPLETE"
 python3 ../$parse $libtest.json -v $objectlist
 echo

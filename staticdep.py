@@ -97,22 +97,26 @@ def getSymbols(nm_output, filename):
 
 def saveJSON(slib, outfile):
     """Build the JSON from the object list then save it in a file."""
-    objdict = {}
+    maindct    = {}    # The main dictionnary holding filetype, library name and content
+    contentdct = {}    # Content of the static library and their dependencies
 
-    # First, save the name of the static library
-    objdict["Static library"] = slib
+    # Indicate that the JSON file is the result of a static library analysis
+    maindct["slib_analysis"] = True
+    # Save the name of the static library
+    maindct["Static library"] = slib
     # Then for each object file, save dependencies and unresolved symbols
     for objectFile in objectFiles:
         attrdict = {}
         attrdict["Dependencies"]              = objectFile.getDependencies()
         attrdict["Unresolved local symbols"]  = objectFile.getUnresLocal()
         attrdict["Unresolved global symbols"] = objectFile.getUnresGlobal()
-        objdict[objectFile.getFilename()]     = attrdict
+        contentdct[objectFile.getFilename()]  = attrdict
+    maindct["Content"] = contentdct
 
     # Write the JSON representation in a text file
     try:
         with open(outfile, 'w') as out:
-            json.dump(objdict, out, indent=4)
+            json.dump(maindct, out, indent=4)
             print("JSON result of '{0}' analysis saved as '{1}'".format(slib, outfile))
     except IOError as e:
         print("I/O error on '{0}': {1}".format(outfile, e.strerror))
