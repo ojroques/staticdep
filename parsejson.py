@@ -1,7 +1,7 @@
 import argparse
 import json
 
-def printNodes(staticdep):
+def printLeaves(staticdep):
     """Print object files in the given static library that do not depend on any
     other object files also contained in this library.
     """
@@ -53,7 +53,7 @@ def verify(staticdep, objectlist, objectFiles):
     # Then print object files with their missing dependencies if there are any
     if uncompleteObj:
         print("This list of object files is UNCOMPLETE:")
-        print("  OBJ_FILE" + " "*(maxLength - len("OBJ_FILE")) + " <- MISSING DEPENDENCIES")
+        print("  OBJ_FILE" + " "*(maxLength - len("OBJ_FILE")) + " <- MISSING_DEPENDENCIES")
         for objectName, missingDep in uncompleteObj.items():
             # Build the line to be print
             line  = "- {0}".format(objectName) + " " * (maxLength - len(objectName))
@@ -91,7 +91,7 @@ def main():
 
     # Decide what to print according to the given arguments
     if (objectlist == None):    # Print independent object files
-        printNodes(staticdep)
+        printLeaves(staticdep)
     else:                       # Else verify that a list of object files is complete
         try:
             objectFiles = []   # The list of object files to verify
