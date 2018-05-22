@@ -117,7 +117,7 @@ def saveJSON(slib, outfile):
     try:
         with open(outfile, 'w') as out:
             json.dump(maindct, out, indent=4)
-            print("JSON result of '{0}' analysis saved as '{1}'".format(slib, outfile))
+            print("JSON result of '{0}' analysis saved in '{1}'".format(slib, outfile))
     except IOError as e:
         print("I/O error on '{0}': {1}".format(outfile, e.strerror))
         return
@@ -129,7 +129,7 @@ def printSummary(slib):
     maxLength = max([len(obj.getFilename()) for obj in objectFiles])
     maxLength = max(maxLength, len("OBJ_FILE"))
 
-    print("\nSUMMARY OF ANALYSIS")
+    print("SUMMARY OF ANALYSIS")
     print("The static library '{0}' contains {1} object files:".format(slib, nbObj))
     print("- OBJ_FILE" + " "*(maxLength - len("OBJ_FILE")) + " <- DEPENDENCIES")
     for objectFile in objectFiles:

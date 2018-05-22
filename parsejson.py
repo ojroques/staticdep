@@ -1,6 +1,5 @@
 import argparse
 import json
-import copy
 
 def printNodes(staticdep):
     """Print object files in the given static library that do not depend on any
@@ -17,6 +16,7 @@ def printNodes(staticdep):
     print("which represents {0}/{1} of all object files or {2:2.0f}%.".format(nbIndepObj, totalObj, (nbIndepObj / totalObj) * 100))
 
 def verify(staticdep, objectlist, objectFiles):
+    """Verify that there are no missing dependencies in a list of object files."""
     print("Dependencies in '{0}' of object files listed in '{1}':".format(staticdep["Static library"], objectlist))
 
 def main():
@@ -26,7 +26,7 @@ def main():
     parser.add_argument("jsonfile", metavar="json_file",
                         help="the JSON file to parse")
     parser.add_argument("-v", metavar="object_list",
-                        help="list of object files (one per line in a separate txt file) to verify")
+                        help="list of object files to verify (one per line in a separate txt file)")
     jsonfile   = parser.parse_args().jsonfile   # The name of the json output file
     objectlist = parser.parse_args().v          # List of object files
 
