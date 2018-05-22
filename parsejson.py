@@ -31,20 +31,24 @@ def verify(staticdep, objectlist, objectFiles):
           .format(staticdep["Static library"], objectlist))
     print("  OBJ_FILE" + " "*(maxLength - len("OBJ_FILE")) + " <- DEPENDENCIES")
     for objectName in objectFiles:
-        dependencies = slibContent[objectName]["Dependencies"]
-        # Set of missing dependencies (dependencies not in the object files list)
-        difference   = set(dependencies) - set(objectFiles)
-        # If there are missing dependencies, save them and the object file name
-        if difference:
-            uncompleteObj[objectName] = difference
-        # Build the line to be print
-        line         = "- {0}".format(objectName) + " " * (maxLength - len(objectName))
-        line        += " <- "
-        if (dependencies == []):
-            line += "No dependencies"
+        # First we must check that the given object file is indeed listed in the static library
+        if (objectName in slibContent):
+            dependencies = slibContent[objectName]["Dependencies"]
+            # Set of missing dependencies (dependencies not in the object files list)
+            difference   = set(dependencies) - set(objectFiles)
+            # If there are missing dependencies, save them and the object file name
+            if difference:
+                uncompleteObj[objectName] = difference
+            # Build the line to be print
+            line         = "- {0}".format(objectName) + " " * (maxLength - len(objectName))
+            line        += " <- "
+            if (dependencies == []):
+                line += "No dependencies"
+            else:
+                line += ", ".join(dependencies)
+            print(line)
         else:
-            line += ", ".join(dependencies)
-        print(line)
+            print("- No object file '{0}' found".format(objectName))
 
     # Then print object files with their missing dependencies if there are any
     if uncompleteObj:

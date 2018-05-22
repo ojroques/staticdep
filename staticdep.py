@@ -7,17 +7,25 @@ objectFiles = []    # List of objects files included in the static lib
 
 
 class ObjectFile:
-    """Define an object file by its name, its dependencies and its unresolved
-    local (located in the static library) and global symbols.
+    """Define an object file by its name, its dependencies and its defined /
+    unresolved local (located in the static library) and global symbols.
     """
     def __init__(self, filename):
         self.filename     = filename    # The name of the object file
+        self.defined      = []          # List of defined symbols
         self.unresLocal   = []          # List of unresolved but local symbols
         self.unresGlobal  = []          # List of other unresolved symbols
         self.dependencies = []          # List of the required object files
 
     def getFilename(self):
         return self.filename
+
+    def setDefined(self, defined):
+        for res in defined:
+            self.defined.append(res)
+
+    def getDefined(self):
+        return self.defined
 
     def setUnresLocal(self, unresLocal):
         for unres in unresLocal:
@@ -66,8 +74,9 @@ def buildIndex(nm_output):
         index[symbolName] = objectFile
 
 def getSymbols(nm_output, filename):
-    """List object files on which 'filename' depends on by searching for
-    unresolved symbols in 'nm' output for 'filename'.
+    """List object files on which 'filename' depends on and defined and unresolved symbols
+    by searching for symbols in 'nm' output for 'filename'.
+    Return a tuple with all elements necessary to finish building an ObjectFile object.
     """
     dependencies = set()    # Required object files
     unresLocal   = []       # Unresolved local (in the static lib) symbols
@@ -79,6 +88,9 @@ def getSymbols(nm_output, filename):
     except ValueError:
         print("Symbol {0} was not found!".format(filename))
         return
+
+    # Retrieve all symbols defined by the given object file
+    defined = [symbol for symbol in index.keys() if index[symbol] == filename]
 
     # Iterate over each symbol to search for the unresolved ones (Type 'U')
     for line in nm_output[i0 + 1:]:
@@ -93,7 +105,7 @@ def getSymbols(nm_output, filename):
             else:
                 unresGlobal.append(symbolName)
 
-    return (list(dependencies), unresLocal, unresGlobal)
+    return (list(dependencies), defined, unresLocal, unresGlobal)
 
 def saveJSON(slib, outfile):
     """Build the JSON from the object list then save it in a file."""
@@ -104,10 +116,11 @@ def saveJSON(slib, outfile):
     maindct["slib_analysis"] = True
     # Save the name of the static library
     maindct["Static library"] = slib
-    # Then for each object file, save dependencies and unresolved symbols
+    # Then for each object file, save dependencies and defined / unresolved symbols
     for objectFile in objectFiles:
         attrdict = {}
         attrdict["Dependencies"]              = objectFile.getDependencies()
+        attrdict["Defined symbols"]           = objectFile.getDefined()
         attrdict["Unresolved local symbols"]  = objectFile.getUnresLocal()
         attrdict["Unresolved global symbols"] = objectFile.getUnresGlobal()
         contentdct[objectFile.getFilename()]  = attrdict
@@ -183,10 +196,11 @@ def main():
 
     # Iterate over the object files to create associated lists
     for objectFile in objectFiles:
-        dependencies, unresLocal, unresGlobal = getSymbols(nm_output, objectFile.getFilename())
+        dependencies, defined, unresLocal, unresGlobal = getSymbols(nm_output, objectFile.getFilename())
+        objectFile.setDependencies(dependencies)
+        objectFile.setDefined(defined)
         objectFile.setUnresLocal(unresLocal)
         objectFile.setUnresGlobal(unresGlobal)
-        objectFile.setDependencies(dependencies)
 
     # Finally save the JSON in a file
     saveJSON(slib, outfile)
