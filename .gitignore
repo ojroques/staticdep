@@ -11,3 +11,4 @@ test/file1X2
 
 libcrypt.a
 libutil.a
+libpthread.a

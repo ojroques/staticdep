@@ -27,8 +27,8 @@ def verify(staticdep, objectlist, objectFiles):
 
     # First, print each object file in the list with their dependencies
     # and find missing dependencies
-    print("Dependencies in '{0}' of object files listed in '{1}':"
-          .format(staticdep["Static library"], objectlist))
+    print("Dependencies in '{0}' of the {1} object files from '{2}':"
+          .format(staticdep["Static library"], len(objectFiles), objectlist))
     print("  OBJ_FILE" + " "*(maxLength - len("OBJ_FILE")) + " <- DEPENDENCIES")
     for objectName in objectFiles:
         # First we must check that the given object file is indeed listed in the static library

@@ -142,7 +142,7 @@ def printSummary(slib):
     maxLength = max([len(obj.getFilename()) for obj in objectFiles])
     maxLength = max(maxLength, len("OBJ_FILE"))
 
-    print("SUMMARY OF ANALYSIS")
+    print("\nSUMMARY OF ANALYSIS")
     print("The static library '{0}' contains {1} object files:".format(slib, nbObj))
     print("  OBJ_FILE" + " "*(maxLength - len("OBJ_FILE")) + " <- DEPENDENCIES")
     for objectFile in objectFiles:
@@ -172,7 +172,7 @@ def main():
     outfile = parser.parse_args().o       # Name of the output file
     if (outfile == None):
         try:
-            outfile = slib[:-2] + ".json" # "slib.json" by default
+            outfile = slib[:-2] + ".json" # "/.../slib.json" by default
         except IndexError:
             outfile = "out.json"
 
