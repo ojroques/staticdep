@@ -92,7 +92,7 @@ def getSymbols(nm_output, filename):
     # Retrieve all symbols defined by the given object file
     defined = [symbol for symbol in index.keys() if index[symbol] == filename]
 
-    # Iterate over each symbol to search for the unresolved ones (Type 'U')
+    # Iterate over each symbol to search for unresolved ones (Type 'U')
     for line in nm_output[i0 + 1:]:
         if (line == ""):
             break

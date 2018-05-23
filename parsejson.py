@@ -14,7 +14,7 @@ def printLeaves(staticdep):
         if (value['Dependencies'] == []):
             nbIndepObj += 1
             print("- " + objectName)
-    print("which represents {0}/{1} of all object files or {2:2.0f}%."
+    print("which represents {0}/{1} of all object files or {2:.0f}%."
           .format(nbIndepObj, totalObj, (nbIndepObj / totalObj) * 100))
 
 def verify(staticdep, objectlist, objectFiles):
@@ -23,7 +23,7 @@ def verify(staticdep, objectlist, objectFiles):
     # The longest name length to adjust spacing for aesthetic purpose
     maxLength       = max([len(name) for name in slibContent.keys()])
     maxLength       = max(maxLength, len("OBJ_FILE"))
-    uncompleteObj   = {}    # Object files (keys) with missing dependencies (values)
+    incompleteObj   = {}    # Object files (keys) with missing dependencies (values)
 
     # First, print each object file in the list with their dependencies
     # and find missing dependencies
@@ -38,7 +38,7 @@ def verify(staticdep, objectlist, objectFiles):
             difference   = set(dependencies) - set(objectFiles)
             # If there are missing dependencies, save them and the object file name
             if difference:
-                uncompleteObj[objectName] = difference
+                incompleteObj[objectName] = difference
             # Build the line to be print
             line         = "- {0}".format(objectName) + " " * (maxLength - len(objectName))
             line        += " <- "
@@ -51,10 +51,10 @@ def verify(staticdep, objectlist, objectFiles):
             print("- No object file '{0}' found".format(objectName))
 
     # Then print object files with their missing dependencies if there are any
-    if uncompleteObj:
-        print("This list of object files is UNCOMPLETE:")
+    if incompleteObj:
+        print("\nThis list of object files is INCOMPLETE:")
         print("  OBJ_FILE" + " "*(maxLength - len("OBJ_FILE")) + " <- MISSING_DEPENDENCIES")
-        for objectName, missingDep in uncompleteObj.items():
+        for objectName, missingDep in incompleteObj.items():
             # Build the line to be print
             line  = "- {0}".format(objectName) + " " * (maxLength - len(objectName))
             line += " <- "
