@@ -6,9 +6,10 @@
 
 - [Installation](#installation)
 - [Usage](#usage)
+    - [Analysis](#analysis)
+    - [Parsing](#parsing)
 - [JSON result](#json-result)
-- [Examples](#usage)
-- [Screenshots](#usage)
+- [Examples](#examples)
 
 ## Installation
 
@@ -26,11 +27,11 @@ To get help, you can use the option `-h`:
 - `python3 staticdep.py -h`
 - `python3 parsejson.py -h`
 
-Note that those two tools have been implemented using **python 3.6** on a linux machine. Tests show that they run fine with python 2.7 but you should favor python 3+ anyway.
+Note that those two tools have been implemented using **python 3.6** on a Linux machine. Tests show that they run fine with python 2.7 but you should favor python 3+ anyway.
 
 #### Analysis
 
-* To run the analysis on a static library `libfoo.a` (result saved in `libfoo.json` by default):
+* To run the analysis on a static library `libfoo.a` (result saved as `libfoo.json` where `libfoo.a` is located by default):
 ```sh
 python3 staticdep.py libfoo.a
 ```
@@ -79,22 +80,20 @@ Here is a sample of a JSON analysis result:
             ]
         },
         "file11.o": {
-            ...
         }
-        ...
     }
 }
 ```
 
 It contains 3 main fields:
 * `slib_analysis` is there to indicate that this file is the result of an analysis from `staticdep.py`
-* `Static library` holds the name of the static analysis that has been analyzed
+* `Static library` holds the name of the static library that has been analyzed
 * `Content` lists each object file present in the static library
 
 Then in `Content`, for each object file `foo.o`:
-* `Dependencies` is the list of object files of which `foo.o` depends on
+* `Dependencies` is the list of object files from which `foo.o` depends on
 * `Defined symbols` is the list of symbols defined in `foo.o`
-* `Unresolved local symbols` lists symbols that are not defined in `foo.o` but are present in other object files from the static library and indicates their location
+* `Unresolved local symbols` lists symbols that are not defined in `foo.o` but are present in other object files from the static library
 * `Unresolved global symbols` lists symbols that are not defined in `foo.o` nor in other object files from the static library
 
 ## Examples
