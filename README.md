@@ -97,3 +97,10 @@ Then in `Content`, for each object file `foo.o`:
 * `Unresolved global symbols` lists symbols that are not defined in `foo.o` nor in other object files from the static library
 
 ## Examples
+A static library to test the tools is present in *test/*. It contains 5 object files:
+* `file1.o` has no dependency
+* `file11.o` and `file12.o` both depend on `file1.o`
+* `file111.o` depends on `file11.o`
+* `file1X2.o` depends on `file11.o` and `file12.o`
+
+You can use the bash script `test/runtest.sh` to test all options at once. Below are some screenshots of the results.
