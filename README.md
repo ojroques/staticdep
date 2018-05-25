@@ -104,3 +104,10 @@ A static library to test the tools is present in *test/*. It contains 5 object f
 * `file1X2.o` depends on `file11.o` and `file12.o`
 
 You can use the bash script `test/runtest.sh` to test all options at once. Below are some screenshots of the results.
+
+#### Summary of analysis
+![Summary of analysis](screenshots/summary.png)
+#### List of independent object files
+![Independent object files](screenshots/independent.png)
+#### Verify that a list of object files is complete
+![Verification of completeness](screenshots/verify.png)
