@@ -3,22 +3,29 @@ import json
 
 def printLeaves(staticdep):
     """Print object files in the given static library that do not depend on any
-    other object files also contained in this library.
+    other object file also contained in this library.
     """
     slibContent = staticdep["Content"]   # Content of the static library
     totalObj    = len(slibContent)       # Number of object file in the static library
     nbIndepObj  = 0                      # Number of independent object files
+
     print("Object files in '{0}' that do not depend on any others are:"
           .format(staticdep["Static library"]))
     for objectName, value in slibContent.items():
-        if (value['Dependencies'] == []):
+        if (value['Dependencies'] == []):    # If there are no dependencies, object file is printed
             nbIndepObj += 1
             print("- " + objectName)
     print("which represents {0}/{1} of all object files or {2:.0f}%."
           .format(nbIndepObj, totalObj, (nbIndepObj / totalObj) * 100))
 
 def verify(staticdep, objectlist, objectFiles):
-    """Verify that there are no missing dependencies in a list of object files."""
+    """Verify that there are no missing dependencies in a list of object file.
+    
+    Keyword arguments:
+    staticdep   -- The dictionnary obtained from the JSON file
+    objectlist  -- The name of the file containing the list to verify
+    objectFiles -- The list of object files to verify
+    """
     slibContent     = staticdep["Content"]    # Content of the static library
     # The longest name length to adjust spacing for aesthetic purpose
     maxLength       = max([len(name) for name in slibContent.keys()])
@@ -37,9 +44,9 @@ def verify(staticdep, objectlist, objectFiles):
             # Set of missing dependencies (dependencies not in the object files list)
             difference   = set(dependencies) - set(objectFiles)
             # If there are missing dependencies, save them and the object file name
-            if difference:
+            if (difference):
                 incompleteObj[objectName] = difference
-            # Build the line to be print
+            # Build the line to be printed
             line         = "- {0}".format(objectName) + " " * (maxLength - len(objectName))
             line        += " <- "
             if (dependencies == []):
@@ -55,7 +62,7 @@ def verify(staticdep, objectlist, objectFiles):
         print("\nThis list of object files is INCOMPLETE:")
         print("  OBJ_FILE" + " "*(maxLength - len("OBJ_FILE")) + " <- MISSING_DEPENDENCIES")
         for objectName, missingDep in incompleteObj.items():
-            # Build the line to be print
+            # Build the line to be printed
             line  = "- {0}".format(objectName) + " " * (maxLength - len(objectName))
             line += " <- "
             line += ", ".join(list(missingDep))
@@ -74,9 +81,9 @@ def main():
     parser.add_argument("-v", metavar="object_list",
                         help="list of object files to verify (one per line in a separate txt file)")
     jsonfile   = parser.parse_args().jsonfile   # The name of the json output file
-    objectlist = parser.parse_args().v          # List of object files
+    objectlist = parser.parse_args().v          # Filename of the object file list
 
-    # Retrieve the JSON analysis file
+    # Retrieve the JSON analysis as a dictionnary
     try:
         with open(jsonfile, 'r') as infile:
             staticdep = json.load(infile)         # Load the JSON file
@@ -90,11 +97,11 @@ def main():
         return
 
     # Decide what to print according to the given arguments
-    if (objectlist == None):    # Print independent object files
+    if (objectlist == None):    # Print independent object files if no option '-v'
         printLeaves(staticdep)
-    else:                       # Else verify that a list of object files is complete
+    else:                       # Else verify that a list of object file is complete
         try:
-            objectFiles = []   # The list of object files to verify
+            objectFiles = []   # The list of object file to verify
             with open(objectlist, 'r') as objfile:
                 for line in objfile:
                     objectFiles.append(line.strip())

@@ -2,7 +2,7 @@ import subprocess
 import argparse
 import json
 
-index = {}          # Symbols as keys and their location as value
+index       = {}    # Symbols as keys and their location as value
 objectFiles = []    # List of objects files included in the static lib
 
 
@@ -76,6 +76,11 @@ def buildIndex(nm_output):
 def getSymbols(nm_output, filename):
     """List object files on which 'filename' depends on and defined and unresolved symbols
     by searching for symbols in 'nm' output for 'filename'.
+
+    Keyword arguments:
+    nm_output -- the output of 'nm'
+    filename  -- the name of the object file to analyze
+
     Return a tuple with all elements necessary to finish building an ObjectFile object.
     """
     dependencies = set()    # Required object files
@@ -108,7 +113,12 @@ def getSymbols(nm_output, filename):
     return (list(dependencies), defined, unresLocal, unresGlobal)
 
 def saveJSON(slib, outfile):
-    """Build the JSON from the object list then save it in a file."""
+    """Build the JSON from the object list then save it in a file.
+
+    Keyword arguments:
+    slib    -- the name of the static library
+    outfile -- the path of the output file
+    """
     maindct    = {}    # The main dictionnary holding filetype, library name and content
     contentdct = {}    # Content of the static library and their dependencies
 
@@ -137,7 +147,7 @@ def saveJSON(slib, outfile):
 
 def printSummary(slib):
     """Print a summary of the analysis."""
-    nbObj     = len(objectFiles)   # The static library name is not counted
+    nbObj     = len(objectFiles)   # The number of object file
     # The longest name length to adjust spacing for aesthetic purpose
     maxLength = max([len(obj.getFilename()) for obj in objectFiles])
     maxLength = max(maxLength, len("OBJ_FILE"))
@@ -148,7 +158,7 @@ def printSummary(slib):
     for objectFile in objectFiles:
         filename     = objectFile.getFilename()
         dependencies = objectFile.getDependencies()
-        # Build the line to be print
+        # Build the line to be printed
         line         = "- {0}".format(filename) + " " * (maxLength - len(filename))
         line        += " <- "
         if (dependencies == []):
