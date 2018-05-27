@@ -31,26 +31,29 @@ Note that those two tools have been implemented using **python 3.6** on a Linux 
 
 #### Analysis
 
-* To run the analysis on a static library `libfoo.a` (result saved as `libfoo.json` where `libfoo.a` is located by default):
+To run the analysis on a static library `libfoo.a` (result saved as `libfoo.json` where `libfoo.a` is located by default):
 ```sh
 python3 staticdep.py libfoo.a
 ```
-* You can specify the output file with option `-o`:
+
+You can specify the output file with option `-o`:
 ```sh
 python3 staticdep.py libfoo.a -o foo.json
 ```
-* A summary of the dependencies is printed when option `-s` is set:
+
+A summary of the dependencies is printed when option `-s` is set:
 ```sh
 python3 staticdep.py libfoo.a -s
 ```
 
 #### Parsing
 
-* By default, this tool prints object files listed in the static library that do not depend on any others. If analysis result is stored in `libfoo.json`:
+By default, this tool prints object files listed in the static library that do not depend on any others. If analysis result is stored in `libfoo.json`:
 ```sh
 python3 parsejson.py libfoo.json
 ```
-* You can also verify that a list of object files (in a separate txt file, one filename per line) is complete *i.e.* that there are no missing dependencies:
+
+You can also verify that a list of object files (in a separate txt file, one filename per line) is complete *i.e.* that there are no missing dependencies:
 ```sh
 python3 parsejson.py libfoo.json -v object_list
 ```
