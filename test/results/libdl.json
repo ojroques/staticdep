@@ -1,0 +1,105 @@
+{
+    "slib_analysis": true,
+    "Static library": "libdl.a",
+    "Content": {
+        "dlopen.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "dlopen"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "__dlopen",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "dlclose.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "dlclose"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "__dlclose",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "dlsym.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "dlsym"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "__dlsym",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "dlvsym.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "dlvsym"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "__dlvsym",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "dlerror.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "dlerror"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "__dlerror",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "dladdr.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "dladdr"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "__dladdr",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "dladdr1.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "dladdr1"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "__dladdr1",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "dlinfo.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "dlinfo"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "__dlinfo",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "dlmopen.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "dlmopen"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "__dlmopen",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        }
+    }
+}

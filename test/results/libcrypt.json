@@ -1,0 +1,281 @@
+{
+    "slib_analysis": true,
+    "Static library": "libcrypt.a",
+    "Content": {
+        "crypt-entry.o": {
+            "Dependencies": [
+                "crypt_util.o",
+                "md5-crypt.o",
+                "crypt.o",
+                "sha256-crypt.o",
+                "sha512-crypt.o"
+            ],
+            "Defined symbols": [
+                "__crypt_r",
+                "crypt_r",
+                "crypt",
+                "fcrypt"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__md5_crypt": "md5-crypt.o"
+                },
+                {
+                    "__md5_crypt_r": "md5-crypt.o"
+                },
+                {
+                    "__sha256_crypt": "sha256-crypt.o"
+                },
+                {
+                    "__sha256_crypt_r": "sha256-crypt.o"
+                },
+                {
+                    "__sha512_crypt": "sha512-crypt.o"
+                },
+                {
+                    "__sha512_crypt_r": "sha512-crypt.o"
+                },
+                {
+                    "_ufc_dofinalperm_r": "crypt_util.o"
+                },
+                {
+                    "_ufc_doit_r": "crypt.o"
+                },
+                {
+                    "_ufc_foobar": "crypt_util.o"
+                },
+                {
+                    "_ufc_mk_keytab_r": "crypt_util.o"
+                },
+                {
+                    "_ufc_output_conversion_r": "crypt_util.o"
+                },
+                {
+                    "_ufc_setup_salt_r": "crypt_util.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "__close_nocancel",
+                "errno",
+                "__explicit_bzero_chk",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__open_nocancel",
+                "__read_nocancel",
+                "__stack_chk_fail",
+                "strncmp",
+                "strncpy",
+                "strtol"
+            ]
+        },
+        "md5-crypt.o": {
+            "Dependencies": [
+                "md5.o",
+                "crypt_util.o"
+            ],
+            "Defined symbols": [
+                "__md5_crypt_r",
+                "__md5_crypt"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__b64_from_24bit": "crypt_util.o"
+                },
+                {
+                    "__md5_finish_ctx": "md5.o"
+                },
+                {
+                    "__md5_init_ctx": "md5.o"
+                },
+                {
+                    "__md5_process_bytes": "md5.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "errno",
+                "__explicit_bzero_chk",
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__libc_alloca_cutoff",
+                "malloc",
+                "memcpy",
+                "realloc",
+                "__stack_chk_fail",
+                "__stpncpy",
+                "strcspn",
+                "strlen",
+                "strncmp"
+            ]
+        },
+        "sha256-crypt.o": {
+            "Dependencies": [
+                "sha256.o",
+                "crypt_util.o"
+            ],
+            "Defined symbols": [
+                "__sha256_crypt_r",
+                "__sha256_crypt"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__b64_from_24bit": "crypt_util.o"
+                },
+                {
+                    "__sha256_finish_ctx": "sha256.o"
+                },
+                {
+                    "__sha256_init_ctx": "sha256.o"
+                },
+                {
+                    "__sha256_process_bytes": "sha256.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "errno",
+                "__explicit_bzero_chk",
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__libc_alloca_cutoff",
+                "malloc",
+                "memcpy",
+                "realloc",
+                "__snprintf",
+                "__stack_chk_fail",
+                "__stpncpy",
+                "strcspn",
+                "strlen",
+                "strncmp",
+                "strtoul"
+            ]
+        },
+        "sha512-crypt.o": {
+            "Dependencies": [
+                "sha512.o",
+                "crypt_util.o"
+            ],
+            "Defined symbols": [
+                "__sha512_crypt_r",
+                "__sha512_crypt"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__b64_from_24bit": "crypt_util.o"
+                },
+                {
+                    "__sha512_finish_ctx": "sha512.o"
+                },
+                {
+                    "__sha512_init_ctx": "sha512.o"
+                },
+                {
+                    "__sha512_process_bytes": "sha512.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "errno",
+                "__explicit_bzero_chk",
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__libc_alloca_cutoff",
+                "malloc",
+                "memcpy",
+                "realloc",
+                "__snprintf",
+                "__stack_chk_fail",
+                "__stpncpy",
+                "strcspn",
+                "strlen",
+                "strncmp",
+                "strtoul"
+            ]
+        },
+        "crypt.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "_ufc_doit_r"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": []
+        },
+        "crypt_util.o": {
+            "Dependencies": [
+                "crypt.o"
+            ],
+            "Defined symbols": [
+                "__init_des_r",
+                "__init_des",
+                "_ufc_foobar",
+                "_ufc_setup_salt_r",
+                "_ufc_mk_keytab_r",
+                "_ufc_dofinalperm_r",
+                "_ufc_output_conversion_r",
+                "__encrypt_r",
+                "encrypt_r",
+                "encrypt",
+                "__setkey_r",
+                "setkey_r",
+                "setkey",
+                "__b64_from_24bit"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "_ufc_doit_r": "crypt.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_",
+                "memset",
+                "__stack_chk_fail"
+            ]
+        },
+        "md5.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "__md5_init_ctx",
+                "__md5_read_ctx",
+                "__md5_process_block",
+                "__md5_finish_ctx",
+                "__md5_process_bytes",
+                "__md5_buffer",
+                "__md5_stream"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "ferror",
+                "fread",
+                "_GLOBAL_OFFSET_TABLE_",
+                "memcpy",
+                "__stack_chk_fail"
+            ]
+        },
+        "sha256.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "__sha256_init_ctx",
+                "__sha256_process_block",
+                "__sha256_finish_ctx",
+                "__sha256_process_bytes"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_",
+                "memcpy",
+                "__stack_chk_fail"
+            ]
+        },
+        "sha512.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "__sha512_init_ctx",
+                "__sha512_process_block",
+                "__sha512_finish_ctx",
+                "__sha512_process_bytes"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_",
+                "memcpy",
+                "__stack_chk_fail"
+            ]
+        }
+    }
+}

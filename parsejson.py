@@ -20,7 +20,7 @@ def printLeaves(staticdep):
 
 def verify(staticdep, objectlist, objectFiles):
     """Verify that there are no missing dependencies in a list of object file.
-    
+
     Keyword arguments:
     staticdep   -- The dictionnary obtained from the JSON file
     objectlist  -- The name of the file containing the list to verify

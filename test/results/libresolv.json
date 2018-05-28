@@ -1,0 +1,269 @@
+{
+    "slib_analysis": true,
+    "Static library": "libresolv.a",
+    "Content": {
+        "res_comp.o": {
+            "Dependencies": [
+                "ns_netint.o",
+                "ns_name.o"
+            ],
+            "Defined symbols": [
+                "__dn_expand",
+                "__dn_comp",
+                "__dn_skipname",
+                "__res_hnok",
+                "__res_ownok",
+                "__res_mailok",
+                "__res_dnok",
+                "__putlong",
+                "__putshort",
+                "_getlong",
+                "_getshort"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "ns_get16": "ns_netint.o"
+                },
+                {
+                    "ns_get32": "ns_netint.o"
+                },
+                {
+                    "ns_name_compress": "ns_name.o"
+                },
+                {
+                    "ns_name_pton": "ns_name.o"
+                },
+                {
+                    "ns_name_skip": "ns_name.o"
+                },
+                {
+                    "ns_name_uncompress": "ns_name.o"
+                },
+                {
+                    "ns_put16": "ns_netint.o"
+                },
+                {
+                    "ns_put32": "ns_netint.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail"
+            ]
+        },
+        "res_debug.o": {
+            "Dependencies": [
+                "ns_ttl.o",
+                "ns_print.o",
+                "ns_parse.o",
+                "res_comp.o"
+            ],
+            "Defined symbols": [
+                "__p_default_section_syms",
+                "__p_update_section_syms",
+                "__p_class_syms",
+                "__p_type_syms",
+                "__fp_resstat",
+                "__fp_nquery",
+                "__p_rcode_syms",
+                "__fp_query",
+                "__p_query",
+                "__p_cdnname",
+                "__p_cdname",
+                "__p_fqnname",
+                "__p_fqname",
+                "__sym_ston",
+                "__sym_ntos",
+                "__sym_ntop",
+                "__p_type",
+                "__p_class",
+                "__p_option",
+                "__p_time",
+                "__p_rcode",
+                "__loc_aton",
+                "__loc_ntoa",
+                "__dn_count_labels"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__dn_expand": "res_comp.o"
+                },
+                {
+                    "_ns_flagdata": "ns_parse.o"
+                },
+                {
+                    "ns_format_ttl": "ns_ttl.o"
+                },
+                {
+                    "ns_initparse": "ns_parse.o"
+                },
+                {
+                    "ns_parserr": "ns_parse.o"
+                },
+                {
+                    "ns_sprintrr": "ns_print.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "__ctype_b_loc",
+                "errno",
+                "fprintf",
+                "fputc",
+                "fputs",
+                "free",
+                "fwrite",
+                "_GLOBAL_OFFSET_TABLE_",
+                "_IO_putc",
+                "malloc",
+                "__resp",
+                "sprintf",
+                "__stack_chk_fail",
+                "stdout",
+                "strcasecmp",
+                "strdup",
+                "strerror",
+                "strlen"
+            ]
+        },
+        "res_data.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "__res_close"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_",
+                "__res_iclose",
+                "__resp"
+            ]
+        },
+        "res_mkquery.o": {
+            "Dependencies": [
+                "ns_name.o"
+            ],
+            "Defined symbols": [
+                "__res_context_mkquery",
+                "__res_nmkquery",
+                "__res_mkquery",
+                "__res_nopt"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "ns_name_compress": "ns_name.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_",
+                "__resolv_context_get_override",
+                "__resolv_context_get_preinit",
+                "__resolv_context_put",
+                "__stack_chk_fail"
+            ]
+        },
+        "res_query.o": {
+            "Dependencies": [
+                "res_mkquery.o",
+                "res_send.o",
+                "ns_samedomain.o"
+            ],
+            "Defined symbols": [
+                "__res_context_query",
+                "__res_nquery",
+                "__res_query",
+                "__res_nquerydomain",
+                "__res_querydomain",
+                "__res_context_hostalias",
+                "__res_context_search",
+                "__res_nsearch",
+                "__res_search",
+                "__res_hostalias",
+                "__hostalias"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "ns_samename": "ns_samedomain.o"
+                },
+                {
+                    "__res_context_mkquery": "res_mkquery.o"
+                },
+                {
+                    "__res_context_send": "res_send.o"
+                },
+                {
+                    "__res_nopt": "res_mkquery.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "__assert_fail",
+                "__ctype_b_loc",
+                "errno",
+                "fclose",
+                "fgets",
+                "fopen",
+                "free",
+                "getenv",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__h_errno",
+                "malloc",
+                "__resolv_context_get",
+                "__resolv_context_get_override",
+                "__resolv_context_put",
+                "__resp",
+                "setbuf",
+                "sprintf",
+                "__stack_chk_fail",
+                "strlen",
+                "strncpy"
+            ]
+        },
+        "res_send.o": {
+            "Dependencies": [
+                "ns_samedomain.o",
+                "res_comp.o"
+            ],
+            "Defined symbols": [
+                "res_ourserver_p",
+                "__res_isourserver",
+                "__res_nameinquery",
+                "__res_queriesmatch",
+                "__res_context_send",
+                "__res_nsend",
+                "__res_send"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__dn_expand": "res_comp.o"
+                },
+                {
+                    "ns_samename": "ns_samedomain.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "abort",
+                "__assert_fail",
+                "connect",
+                "errno",
+                "getpeername",
+                "gettimeofday",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__h_errno",
+                "in6addr_any",
+                "ioctl",
+                "malloc",
+                "__poll",
+                "read",
+                "recvfrom",
+                "__res_iclose",
+                "__resolv_context_get",
+                "__resolv_context_get_override",
+                "__resolv_context_put",
+                "__resp",
+                "send",
+                "__sendmmsg",
+                "socket",
+                "__stack_chk_fail",
+                "writev"
+            ]
+        },
+        "inet_net_ntop.o": {
+            "Dependencies": [],

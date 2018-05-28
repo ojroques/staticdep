@@ -1,0 +1,128 @@
+{
+    "slib_analysis": true,
+    "Static library": "libutil.a",
+    "Content": {
+        "login.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "login"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "basename",
+                "endutent",
+                "errno",
+                "free",
+                "getpid",
+                "_GLOBAL_OFFSET_TABLE_",
+                "malloc",
+                "memchr",
+                "pututline",
+                "realloc",
+                "setutent",
+                "__stack_chk_fail",
+                "strncpy",
+                "ttyname_r",
+                "updwtmp",
+                "utmpname"
+            ]
+        },
+        "login_tty.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "login_tty"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "close",
+                "dup2",
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_",
+                "ioctl",
+                "setsid"
+            ]
+        },
+        "logout.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "logout"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "endutent",
+                "__gettimeofday",
+                "getutline_r",
+                "_GLOBAL_OFFSET_TABLE_",
+                "pututline",
+                "setutent",
+                "__stack_chk_fail",
+                "strncpy",
+                "utmpname"
+            ]
+        },
+        "logwtmp.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "logwtmp"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "getpid",
+                "__gettimeofday",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail",
+                "strncpy",
+                "updwtmp"
+            ]
+        },
+        "openpty.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "openpty"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "close",
+                "errno",
+                "free",
+                "getpt",
+                "_GLOBAL_OFFSET_TABLE_",
+                "grantpt",
+                "ioctl",
+                "malloc",
+                "memchr",
+                "open",
+                "ptsname_r",
+                "realloc",
+                "__stack_chk_fail",
+                "strcpy",
+                "tcsetattr",
+                "unlockpt"
+            ]
+        },
+        "forkpty.o": {
+            "Dependencies": [
+                "login_tty.o",
+                "openpty.o"
+            ],
+            "Defined symbols": [
+                "forkpty"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "login_tty": "login_tty.o"
+                },
+                {
+                    "openpty": "openpty.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "close",
+                "_exit",
+                "fork",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail"
+            ]
+        }
+    }
+}

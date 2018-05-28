@@ -97,7 +97,9 @@ Then in `Content`, for each object file `foo.o`:
 * `Unresolved global symbols` lists symbols that are not defined in `foo.o` nor in other object files from the static library
 
 ## Examples
-A static library to test the tools is present in *test/*. It contains 5 object files:
+Tools have been tested on several popular static libraries. JSON results can be found in *test/results*. 
+
+A static library `libtest.a` to test the tools is also present in *test/*. It contains 5 object files:
 * `file1.o` has no dependency
 * `file11.o` and `file12.o` both depend on `file1.o`
 * `file111.o` depends on `file11.o`

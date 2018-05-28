@@ -1,0 +1,658 @@
+{
+    "slib_analysis": true,
+    "Static library": "librt.a",
+    "Content": {
+        "aio_cancel.o": {
+            "Dependencies": [
+                "aio_misc.o",
+                "aio_notify.o"
+            ],
+            "Defined symbols": [
+                "aio_cancel",
+                "aio_cancel64"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__aio_find_req_fd": "aio_misc.o"
+                },
+                {
+                    "__aio_free_request": "aio_misc.o"
+                },
+                {
+                    "__aio_notify": "aio_notify.o"
+                },
+                {
+                    "__aio_remove_request": "aio_misc.o"
+                },
+                {
+                    "__aio_requests_mutex": "aio_misc.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "__assert_fail",
+                "errno",
+                "fcntl",
+                "_GLOBAL_OFFSET_TABLE_",
+                "pthread_mutex_lock",
+                "pthread_mutex_unlock"
+            ]
+        },
+        "aio_error.o": {
+            "Dependencies": [
+                "aio_misc.o"
+            ],
+            "Defined symbols": [
+                "aio_error",
+                "aio_error64"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__aio_requests_mutex": "aio_misc.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_",
+                "pthread_mutex_lock",
+                "pthread_mutex_unlock"
+            ]
+        },
+        "aio_fsync.o": {
+            "Dependencies": [
+                "aio_misc.o"
+            ],
+            "Defined symbols": [
+                "aio_fsync",
+                "aio_fsync64"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__aio_enqueue_request": "aio_misc.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "errno",
+                "fcntl",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "aio_misc.o": {
+            "Dependencies": [
+                "aio_notify.o"
+            ],
+            "Defined symbols": [
+                "__aio_requests_mutex",
+                "__aio_new_request_notification",
+                "__aio_free_request",
+                "__aio_find_req",
+                "__aio_find_req_fd",
+                "__aio_remove_request",
+                "__aio_init",
+                "aio_init",
+                "__aio_enqueue_request"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__aio_notify": "aio_notify.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "__assert_fail",
+                "calloc",
+                "errno",
+                "fdatasync",
+                "free",
+                "fsync",
+                "__gettimeofday",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__libc_pread",
+                "__libc_pwrite",
+                "pthread_attr_destroy",
+                "pthread_attr_init",
+                "pthread_attr_setdetachstate",
+                "pthread_attr_setstacksize",
+                "pthread_cond_signal",
+                "pthread_cond_timedwait",
+                "pthread_create",
+                "__pthread_get_minstack",
+                "pthread_getschedparam",
+                "pthread_mutex_lock",
+                "pthread_mutex_unlock",
+                "pthread_self",
+                "pthread_setschedparam",
+                "read",
+                "realloc",
+                "sigfillset",
+                "__stack_chk_fail",
+                "write"
+            ]
+        },
+        "aio_read.o": {
+            "Dependencies": [
+                "aio_misc.o"
+            ],
+            "Defined symbols": [
+                "aio_read",
+                "aio_read64"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__aio_enqueue_request": "aio_misc.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "aio_read64.o": {
+            "Dependencies": [],
+            "Defined symbols": [],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": []
+        },
+        "aio_return.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "aio_return",
+                "aio_return64"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": []
+        },
+        "aio_suspend.o": {
+            "Dependencies": [
+                "librt-cancellation.o",
+                "aio_misc.o"
+            ],
+            "Defined symbols": [
+                "aio_suspend",
+                "DW.ref.__gcc_personality_v0",
+                "aio_suspend64"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__aio_find_req": "aio_misc.o"
+                },
+                {
+                    "__aio_requests_mutex": "aio_misc.o"
+                },
+                {
+                    "__librt_disable_asynccancel": "librt-cancellation.o"
+                },
+                {
+                    "__librt_enable_asynccancel": "librt-cancellation.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "__assert_fail",
+                "errno",
+                "__gcc_personality_v0",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__libc_fatal",
+                "pthread_mutex_lock",
+                "pthread_mutex_unlock",
+                "__stack_chk_fail",
+                "_Unwind_Resume"
+            ]
+        },
+        "aio_write.o": {
+            "Dependencies": [
+                "aio_misc.o"
+            ],
+            "Defined symbols": [
+                "aio_write",
+                "aio_write64"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__aio_enqueue_request": "aio_misc.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "aio_write64.o": {
+            "Dependencies": [],
+            "Defined symbols": [],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": []
+        },
+        "lio_listio.o": {
+            "Dependencies": [
+                "aio_misc.o",
+                "aio_notify.o"
+            ],
+            "Defined symbols": [
+                "__lio_listio_item_notify",
+                "__lio_listio64_item_notify",
+                "lio_listio64",
+                "lio_listio"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__aio_enqueue_request": "aio_misc.o"
+                },
+                {
+                    "__aio_notify_only": "aio_notify.o"
+                },
+                {
+                    "__aio_requests_mutex": "aio_misc.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "__assert_fail",
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__libc_fatal",
+                "malloc",
+                "pthread_mutex_lock",
+                "pthread_mutex_unlock",
+                "__stack_chk_fail"
+            ]
+        },
+        "lio_listio64.o": {
+            "Dependencies": [],
+            "Defined symbols": [],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": []
+        },
+        "aio_sigqueue.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "__aio_sigqueue"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "errno",
+                "getuid",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail"
+            ]
+        },
+        "aio_notify.o": {
+            "Dependencies": [
+                "aio_sigqueue.o"
+            ],
+            "Defined symbols": [
+                "__aio_notify_only",
+                "__aio_notify"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__aio_sigqueue": "aio_sigqueue.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "errno",
+                "free",
+                "getpid",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__libc_fatal",
+                "malloc",
+                "pthread_attr_init",
+                "pthread_attr_setdetachstate",
+                "pthread_create",
+                "sigemptyset",
+                "__stack_chk_fail"
+            ]
+        },
+        "timer_create.o": {
+            "Dependencies": [
+                "timer_routines.o"
+            ],
+            "Defined symbols": [
+                "__timer_create_new",
+                "timer_create"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__active_timer_sigev_thread": "timer_routines.o"
+                },
+                {
+                    "__active_timer_sigev_thread_lock": "timer_routines.o"
+                },
+                {
+                    "__helper_once": "timer_routines.o"
+                },
+                {
+                    "__helper_tid": "timer_routines.o"
+                },
+                {
+                    "__start_helper_thread": "timer_routines.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "errno",
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "malloc",
+                "pthread_attr_init",
+                "pthread_attr_setdetachstate",
+                "pthread_mutex_lock",
+                "pthread_mutex_unlock",
+                "pthread_once",
+                "__stack_chk_fail"
+            ]
+        },
+        "timer_delete.o": {
+            "Dependencies": [
+                "timer_routines.o"
+            ],
+            "Defined symbols": [
+                "__timer_delete_new",
+                "timer_delete"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__active_timer_sigev_thread": "timer_routines.o"
+                },
+                {
+                    "__active_timer_sigev_thread_lock": "timer_routines.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "errno",
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "pthread_mutex_lock",
+                "pthread_mutex_unlock"
+            ]
+        },
+        "timer_getoverr.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "__timer_getoverrun_new",
+                "timer_getoverrun"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "timer_gettime.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "__timer_gettime_new",
+                "timer_gettime"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "timer_settime.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "__timer_settime_new",
+                "timer_settime"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "shm_open.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "shm_open"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_",
+                "memcpy",
+                "__mempcpy",
+                "open",
+                "pthread_setcancelstate",
+                "__shm_directory",
+                "__stack_chk_fail",
+                "strchr",
+                "strlen"
+            ]
+        },
+        "shm_unlink.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "shm_unlink"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_",
+                "memcpy",
+                "__mempcpy",
+                "__shm_directory",
+                "__stack_chk_fail",
+                "strchr",
+                "strlen",
+                "unlink"
+            ]
+        },
+        "mq_open.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "__mq_open",
+                "mq_open",
+                "__mq_open_2"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "errno",
+                "__fortify_fail",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail"
+            ]
+        },
+        "mq_close.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "mq_close"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "mq_unlink.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "mq_unlink"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "mq_getattr.o": {
+            "Dependencies": [
+                "mq_setattr.o"
+            ],
+            "Defined symbols": [
+                "mq_getattr"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "mq_setattr": "mq_setattr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "mq_setattr.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "mq_setattr"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "mq_notify.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "mq_notify"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "__close_nocancel",
+                "errno",
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "malloc",
+                "pthread_atfork",
+                "pthread_attr_destroy",
+                "pthread_attr_init",
+                "pthread_attr_setdetachstate",
+                "pthread_attr_setstacksize",
+                "__pthread_barrier_init",
+                "__pthread_barrier_wait",
+                "pthread_cancel",
+                "pthread_create",
+                "pthread_detach",
+                "__pthread_get_minstack",
+                "pthread_once",
+                "pthread_self",
+                "pthread_sigmask",
+                "__recv",
+                "sigfillset",
+                "__socket",
+                "__stack_chk_fail"
+            ]
+        },
+        "mq_send.o": {
+            "Dependencies": [
+                "mq_timedsend.o"
+            ],
+            "Defined symbols": [
+                "mq_send"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__mq_timedsend": "mq_timedsend.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "mq_receive.o": {
+            "Dependencies": [
+                "mq_timedreceive.o"
+            ],
+            "Defined symbols": [
+                "mq_receive"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__mq_timedreceive": "mq_timedreceive.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "mq_timedsend.o": {
+            "Dependencies": [
+                "librt-cancellation.o"
+            ],
+            "Defined symbols": [
+                "__mq_timedsend",
+                "mq_timedsend"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__librt_disable_asynccancel": "librt-cancellation.o"
+                },
+                {
+                    "__librt_enable_asynccancel": "librt-cancellation.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "mq_timedreceive.o": {
+            "Dependencies": [
+                "librt-cancellation.o"
+            ],
+            "Defined symbols": [
+                "__mq_timedreceive",
+                "mq_timedreceive"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__librt_disable_asynccancel": "librt-cancellation.o"
+                },
+                {
+                    "__librt_enable_asynccancel": "librt-cancellation.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "clock-compat.o": {
+            "Dependencies": [],
+            "Defined symbols": [],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": []
+        },
+        "timer_routines.o": {
+            "Dependencies": [
+                "librt-cancellation.o"
+            ],
+            "Defined symbols": [
+                "__helper_once",
+                "__helper_tid",
+                "__active_timer_sigev_thread_lock",
+                "__active_timer_sigev_thread",
+                "__start_helper_thread"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__librt_disable_asynccancel": "librt-cancellation.o"
+                },
+                {
+                    "__librt_enable_asynccancel": "librt-cancellation.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "errno",
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "malloc",
+                "pthread_atfork",
+                "pthread_attr_destroy",
+                "pthread_attr_init",
+                "pthread_attr_setstacksize",
+                "pthread_create",
+                "pthread_exit",
+                "__pthread_get_minstack",
+                "pthread_mutex_lock",
+                "pthread_mutex_unlock",
+                "sigemptyset",
+                "sigfillset",
+                "__stack_chk_fail"
+            ]
+        },
+        "librt-cancellation.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "__librt_enable_asynccancel",
+                "__librt_disable_asynccancel"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": []
+        }
+    }
+}

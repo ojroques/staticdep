@@ -1,0 +1,1474 @@
+{
+    "slib_analysis": true,
+    "Static library": "libnsl.a",
+    "Content": {
+        "yp_xdr.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "xdr_ypmaplist",
+                "xdr_ypstat",
+                "xdr_ypxfrstat",
+                "xdr_domainname",
+                "xdr_mapname",
+                "xdr_peername",
+                "xdr_keydat",
+                "xdr_valdat",
+                "xdr_ypmap_parms",
+                "xdr_ypreq_key",
+                "xdr_ypreq_nokey",
+                "xdr_ypreq_xfr",
+                "xdr_ypresp_val",
+                "xdr_ypresp_key_val",
+                "xdr_ypresp_master",
+                "xdr_ypresp_order",
+                "xdr_ypresp_all",
+                "xdr_ypresp_xfr",
+                "xdr_ypresp_maplist",
+                "xdr_yppush_status",
+                "xdr_yppushresp_xfr",
+                "xdr_ypbind_resptype",
+                "xdr_ypbind_binding",
+                "xdr_ypbind_resp",
+                "xdr_ypbind_setdom",
+                "xdr_ypall"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail",
+                "xdr_bool",
+                "xdr_bytes",
+                "xdr_enum",
+                "xdr_opaque",
+                "xdr_pointer",
+                "xdr_string",
+                "xdr_u_int"
+            ]
+        },
+        "ypclnt.o": {
+            "Dependencies": [
+                "ypupdate_xdr.o",
+                "yp_xdr.o"
+            ],
+            "Defined symbols": [
+                "yp_bind",
+                "yp_unbind",
+                "yp_get_default_domain",
+                "__yp_check",
+                "yp_match",
+                "yp_first",
+                "yp_next",
+                "yp_master",
+                "yp_order",
+                "yp_all",
+                "yp_maplist",
+                "yperr_string",
+                "ypprot_err",
+                "ypbinderr_string",
+                "yp_update"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "xdr_domainname": "yp_xdr.o"
+                },
+                {
+                    "xdr_ypbind_resp": "yp_xdr.o"
+                },
+                {
+                    "xdr_ypdelete_args": "ypupdate_xdr.o"
+                },
+                {
+                    "xdr_ypreq_key": "yp_xdr.o"
+                },
+                {
+                    "xdr_ypreq_nokey": "yp_xdr.o"
+                },
+                {
+                    "xdr_ypresp_all": "yp_xdr.o"
+                },
+                {
+                    "xdr_ypresp_key_val": "yp_xdr.o"
+                },
+                {
+                    "xdr_ypresp_maplist": "yp_xdr.o"
+                },
+                {
+                    "xdr_ypresp_master": "yp_xdr.o"
+                },
+                {
+                    "xdr_ypresp_order": "yp_xdr.o"
+                },
+                {
+                    "xdr_ypresp_val": "yp_xdr.o"
+                },
+                {
+                    "xdr_ypupdate_args": "ypupdate_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "authdes_create",
+                "authunix_create_default",
+                "calloc",
+                "clnt_create",
+                "clnt_pcreateerror",
+                "clnt_perror",
+                "clnttcp_create",
+                "close",
+                "__dcgettext",
+                "errno",
+                "fprintf",
+                "fputs",
+                "free",
+                "getdomainname",
+                "_GLOBAL_OFFSET_TABLE_",
+                "host2netname",
+                "__libc_clntudp_bufcreate",
+                "_libc_intl_domainname",
+                "malloc",
+                "memcpy",
+                "__mempcpy",
+                "open",
+                "pread",
+                "snprintf",
+                "__stack_chk_fail",
+                "stderr",
+                "strcmp",
+                "strdup",
+                "strlen",
+                "strncpy",
+                "xdr_free",
+                "xdr_u_int"
+            ]
+        },
+        "ypupdate_xdr.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "xdr_yp_buf",
+                "xdr_ypupdate_args",
+                "xdr_ypdelete_args"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_",
+                "xdr_bytes",
+                "xdr_string"
+            ]
+        },
+        "nis_subr.o": {
+            "Dependencies": [
+                "nis_free.o",
+                "nis_local_names.o"
+            ],
+            "Defined symbols": [
+                "nis_leaf_of",
+                "nis_leaf_of_r",
+                "nis_name_of",
+                "nis_name_of_r",
+                "nis_getnames",
+                "nis_freenames",
+                "nis_dir_cmp",
+                "nis_destroy_object"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "nis_free_object": "nis_free.o"
+                },
+                {
+                    "nis_local_directory": "nis_local_names.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "__asprintf",
+                "errno",
+                "free",
+                "getenv",
+                "_GLOBAL_OFFSET_TABLE_",
+                "malloc",
+                "memcpy",
+                "__mempcpy",
+                "realloc",
+                "__stack_chk_fail",
+                "__stpcpy",
+                "strcmp",
+                "strcpy",
+                "strdup",
+                "strlen",
+                "__strtok_r"
+            ]
+        },
+        "nis_local_names.o": {
+            "Dependencies": [
+                "nis_table.o",
+                "nis_free.o"
+            ],
+            "Defined symbols": [
+                "nis_local_group",
+                "nis_local_directory",
+                "nis_local_principal",
+                "nis_local_host"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "nis_freeresult": "nis_free.o"
+                },
+                {
+                    "nis_list": "nis_table.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "__dcgettext",
+                "getdomainname",
+                "getenv",
+                "geteuid",
+                "gethostname",
+                "_GLOBAL_OFFSET_TABLE_",
+                "_libc_intl_domainname",
+                "memcpy",
+                "printf",
+                "rawmemchr",
+                "snprintf",
+                "__stack_chk_fail",
+                "__stpcpy",
+                "strcpy",
+                "strlen",
+                "strncpy"
+            ]
+        },
+        "nis_free.o": {
+            "Dependencies": [
+                "nis_xdr.o"
+            ],
+            "Defined symbols": [
+                "__free_fdresult",
+                "nis_free_request",
+                "nis_free_directory",
+                "nis_free_object",
+                "nis_freeresult"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "_xdr_directory_obj": "nis_xdr.o"
+                },
+                {
+                    "_xdr_fd_result": "nis_xdr.o"
+                },
+                {
+                    "_xdr_ib_request": "nis_xdr.o"
+                },
+                {
+                    "_xdr_nis_object": "nis_xdr.o"
+                },
+                {
+                    "_xdr_nis_result": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "xdr_free"
+            ]
+        },
+        "nis_file.o": {
+            "Dependencies": [
+                "nis_xdr.o",
+                "nis_free.o"
+            ],
+            "Defined symbols": [
+                "readColdStartFile",
+                "writeColdStartFile",
+                "nis_read_obj",
+                "nis_write_obj"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "nis_free_directory": "nis_free.o"
+                },
+                {
+                    "nis_free_object": "nis_free.o"
+                },
+                {
+                    "_xdr_directory_obj": "nis_xdr.o"
+                },
+                {
+                    "_xdr_nis_object": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "calloc",
+                "fclose",
+                "fopen",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail",
+                "xdrstdio_create"
+            ]
+        },
+        "nis_print.o": {
+            "Dependencies": [
+                "nis_error.o"
+            ],
+            "Defined symbols": [
+                "nis_print_rights",
+                "nis_print_directory",
+                "nis_print_group",
+                "nis_print_table",
+                "nis_print_link",
+                "nis_print_entry",
+                "nis_print_object",
+                "nis_print_result"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "nis_sperrno": "nis_error.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "ctime",
+                "__dcgettext",
+                "fputc",
+                "fputs",
+                "fwrite",
+                "_GLOBAL_OFFSET_TABLE_",
+                "_libc_intl_domainname",
+                "printf",
+                "puts",
+                "__stack_chk_fail",
+                "stdout"
+            ]
+        },
+        "nis_error.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "nis_sperrno",
+                "nis_perror",
+                "nis_lerror",
+                "nis_sperror_r",
+                "nis_sperror"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "dcgettext",
+                "errno",
+                "fprintf",
+                "_GLOBAL_OFFSET_TABLE_",
+                "snprintf",
+                "stderr",
+                "syslog"
+            ]
+        },
+        "nis_call.o": {
+            "Dependencies": [
+                "nis_free.o",
+                "nis_callback.o",
+                "nis_file.o",
+                "nis_findserv.o",
+                "nis_xdr.o",
+                "nis_domain_of.o",
+                "nis_util.o",
+                "nis_subr.o"
+            ],
+            "Defined symbols": [
+                "inetstr2int",
+                "__nisbind_destroy",
+                "__nisbind_next",
+                "__nisbind_connect",
+                "__nisbind_create",
+                "__do_niscall3",
+                "__do_niscall2",
+                "__nisfind_server",
+                "__prepare_niscall",
+                "__do_niscall"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__free_fdresult": "nis_free.o"
+                },
+                {
+                    "nis_dir_cmp": "nis_subr.o"
+                },
+                {
+                    "__nis_do_callback": "nis_callback.o"
+                },
+                {
+                    "__nis_domain_of": "nis_domain_of.o"
+                },
+                {
+                    "__nis_finddirectory": "nis_util.o"
+                },
+                {
+                    "__nis_findfastest": "nis_findserv.o"
+                },
+                {
+                    "nis_free_directory": "nis_free.o"
+                },
+                {
+                    "nis_leaf_of_r": "nis_subr.o"
+                },
+                {
+                    "__pmap_getnisport": "nis_findserv.o"
+                },
+                {
+                    "readColdStartFile": "nis_file.o"
+                },
+                {
+                    "_xdr_directory_obj": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "authdes_pk_create",
+                "authunix_create_default",
+                "calloc",
+                "clnttcp_create",
+                "clntudp_create",
+                "errno",
+                "fcntl",
+                "free",
+                "geteuid",
+                "getpid",
+                "gettimeofday",
+                "_GLOBAL_OFFSET_TABLE_",
+                "inet_addr",
+                "key_gendes",
+                "memcpy",
+                "memmove",
+                "perror",
+                "rawmemchr",
+                "realloc",
+                "__stack_chk_fail",
+                "__stpcpy",
+                "strcmp",
+                "strcpy",
+                "strlen",
+                "strncpy",
+                "xdrmem_create",
+                "xdr_sizeof",
+                "__xstat64"
+            ]
+        },
+        "nis_lookup.o": {
+            "Dependencies": [
+                "nis_free.o",
+                "nis_call.o",
+                "nis_xdr.o",
+                "nis_domain_of.o",
+                "nis_subr.o"
+            ],
+            "Defined symbols": [
+                "nis_lookup"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__nisbind_connect": "nis_call.o"
+                },
+                {
+                    "__nisbind_destroy": "nis_call.o"
+                },
+                {
+                    "__nisbind_next": "nis_call.o"
+                },
+                {
+                    "__nis_domain_of": "nis_domain_of.o"
+                },
+                {
+                    "__nisfind_server": "nis_call.o"
+                },
+                {
+                    "nis_free_directory": "nis_free.o"
+                },
+                {
+                    "nis_freenames": "nis_subr.o"
+                },
+                {
+                    "nis_getnames": "nis_subr.o"
+                },
+                {
+                    "__prepare_niscall": "nis_call.o"
+                },
+                {
+                    "_xdr_nis_result": "nis_xdr.o"
+                },
+                {
+                    "_xdr_ns_request": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "calloc",
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "memcpy",
+                "__stack_chk_fail",
+                "strlen",
+                "xdr_free"
+            ]
+        },
+        "nis_table.o": {
+            "Dependencies": [
+                "nis_clone_obj.o",
+                "nis_callback.o",
+                "nis_call.o",
+                "nis_local_names.o",
+                "nis_xdr.o",
+                "nis_domain_of_r.o",
+                "nis_free.o",
+                "nis_subr.o"
+            ],
+            "Defined symbols": [
+                "__create_ib_request",
+                "__follow_path",
+                "nis_list",
+                "nis_add_entry",
+                "nis_modify_entry",
+                "nis_remove_entry",
+                "nis_first_entry",
+                "nis_next_entry"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__do_niscall": "nis_call.o"
+                },
+                {
+                    "__nisbind_connect": "nis_call.o"
+                },
+                {
+                    "__nisbind_destroy": "nis_call.o"
+                },
+                {
+                    "__nisbind_next": "nis_call.o"
+                },
+                {
+                    "nis_clone_object": "nis_clone_obj.o"
+                },
+                {
+                    "__nis_create_callback": "nis_callback.o"
+                },
+                {
+                    "__nis_destroy_callback": "nis_callback.o"
+                },
+                {
+                    "__nis_do_callback": "nis_callback.o"
+                },
+                {
+                    "nis_domain_of_r": "nis_domain_of_r.o"
+                },
+                {
+                    "__nisfind_server": "nis_call.o"
+                },
+                {
+                    "nis_free_directory": "nis_free.o"
+                },
+                {
+                    "nis_freenames": "nis_subr.o"
+                },
+                {
+                    "nis_free_request": "nis_free.o"
+                },
+                {
+                    "nis_freeresult": "nis_free.o"
+                },
+                {
+                    "nis_getnames": "nis_subr.o"
+                },
+                {
+                    "nis_leaf_of_r": "nis_subr.o"
+                },
+                {
+                    "nis_local_group": "nis_local_names.o"
+                },
+                {
+                    "nis_local_principal": "nis_local_names.o"
+                },
+                {
+                    "_xdr_ib_request": "nis_xdr.o"
+                },
+                {
+                    "_xdr_nis_result": "nis_xdr.o"
+                },
+                {
+                    "_xdr_ns_request": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "calloc",
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "malloc",
+                "memcpy",
+                "realloc",
+                "__stack_chk_fail",
+                "strchr",
+                "strdup",
+                "strlen",
+                "strsep",
+                "xdr_free"
+            ]
+        },
+        "nis_xdr.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "_xdr_nis_name",
+                "_xdr_nis_tag",
+                "_xdr_nis_server",
+                "xdr_obj_p",
+                "_xdr_nis_object",
+                "_xdr_directory_obj",
+                "_xdr_nis_error",
+                "_xdr_nis_result",
+                "_xdr_ns_request",
+                "_xdr_ib_request",
+                "_xdr_ping_args",
+                "_xdr_cp_result",
+                "_xdr_nis_taglist",
+                "_xdr_fd_args",
+                "_xdr_fd_result",
+                "xdr_cback_data"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_",
+                "xdr_array",
+                "xdr_bytes",
+                "xdr_enum",
+                "xdr_int",
+                "xdr_netobj",
+                "xdr_pointer",
+                "xdr_string",
+                "xdr_u_char",
+                "xdr_u_int",
+                "xdr_uint32_t"
+            ]
+        },
+        "nis_server.o": {
+            "Dependencies": [
+                "nis_xdr.o",
+                "nis_call.o"
+            ],
+            "Defined symbols": [
+                "nis_servstate",
+                "nis_stats",
+                "nis_freetags"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__do_niscall2": "nis_call.o"
+                },
+                {
+                    "_xdr_nis_taglist": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail"
+            ]
+        },
+        "nis_ping.o": {
+            "Dependencies": [
+                "nis_xdr.o",
+                "nis_call.o",
+                "nis_free.o",
+                "nis_lookup.o"
+            ],
+            "Defined symbols": [
+                "nis_ping"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__do_niscall2": "nis_call.o"
+                },
+                {
+                    "nis_freeresult": "nis_free.o"
+                },
+                {
+                    "nis_lookup": "nis_lookup.o"
+                },
+                {
+                    "_xdr_ping_args": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "abort",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail",
+                "xdr_void"
+            ]
+        },
+        "nis_checkpoint.o": {
+            "Dependencies": [
+                "nis_xdr.o",
+                "nis_call.o",
+                "nis_free.o",
+                "nis_lookup.o"
+            ],
+            "Defined symbols": [
+                "nis_checkpoint"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__do_niscall2": "nis_call.o"
+                },
+                {
+                    "nis_freeresult": "nis_free.o"
+                },
+                {
+                    "nis_lookup": "nis_lookup.o"
+                },
+                {
+                    "_xdr_cp_result": "nis_xdr.o"
+                },
+                {
+                    "_xdr_nis_name": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "calloc",
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail"
+            ]
+        },
+        "nis_mkdir.o": {
+            "Dependencies": [
+                "nis_xdr.o",
+                "nis_call.o"
+            ],
+            "Defined symbols": [
+                "nis_mkdir"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__do_niscall": "nis_call.o"
+                },
+                {
+                    "__do_niscall2": "nis_call.o"
+                },
+                {
+                    "_xdr_nis_error": "nis_xdr.o"
+                },
+                {
+                    "_xdr_nis_name": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail"
+            ]
+        },
+        "nis_rmdir.o": {
+            "Dependencies": [
+                "nis_xdr.o",
+                "nis_call.o"
+            ],
+            "Defined symbols": [
+                "nis_rmdir"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__do_niscall2": "nis_call.o"
+                },
+                {
+                    "_xdr_nis_error": "nis_xdr.o"
+                },
+                {
+                    "_xdr_nis_name": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail"
+            ]
+        },
+        "nis_getservlist.o": {
+            "Dependencies": [
+                "nis_xdr.o",
+                "nis_free.o",
+                "nis_lookup.o"
+            ],
+            "Defined symbols": [
+                "nis_getservlist",
+                "nis_freeservlist"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "nis_freeresult": "nis_free.o"
+                },
+                {
+                    "nis_lookup": "nis_lookup.o"
+                },
+                {
+                    "_xdr_nis_server": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "calloc",
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "malloc",
+                "memcpy",
+                "strdup",
+                "xdr_free"
+            ]
+        },
+        "nis_verifygroup.o": {
+            "Dependencies": [
+                "nis_domain_of_r.o",
+                "nis_free.o",
+                "nis_subr.o",
+                "nis_lookup.o"
+            ],
+            "Defined symbols": [
+                "nis_verifygroup"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "nis_domain_of_r": "nis_domain_of_r.o"
+                },
+                {
+                    "nis_freeresult": "nis_free.o"
+                },
+                {
+                    "nis_leaf_of_r": "nis_subr.o"
+                },
+                {
+                    "nis_lookup": "nis_lookup.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail",
+                "__stpcpy",
+                "strcpy",
+                "strlen"
+            ]
+        },
+        "nis_ismember.o": {
+            "Dependencies": [
+                "nis_domain_of_r.o",
+                "nis_free.o",
+                "nis_subr.o",
+                "nis_lookup.o"
+            ],
+            "Defined symbols": [
+                "nis_ismember"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "nis_domain_of_r": "nis_domain_of_r.o"
+                },
+                {
+                    "nis_freeresult": "nis_free.o"
+                },
+                {
+                    "nis_leaf_of_r": "nis_subr.o"
+                },
+                {
+                    "nis_lookup": "nis_lookup.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail",
+                "__stpcpy",
+                "strcmp",
+                "strcpy",
+                "strlen"
+            ]
+        },
+        "nis_addmember.o": {
+            "Dependencies": [
+                "nis_modify.o",
+                "nis_lookup.o",
+                "nis_domain_of_r.o",
+                "nis_free.o",
+                "nis_subr.o"
+            ],
+            "Defined symbols": [
+                "nis_addmember"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "nis_domain_of_r": "nis_domain_of_r.o"
+                },
+                {
+                    "nis_freeresult": "nis_free.o"
+                },
+                {
+                    "nis_leaf_of_r": "nis_subr.o"
+                },
+                {
+                    "nis_lookup": "nis_lookup.o"
+                },
+                {
+                    "nis_modify": "nis_modify.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "__assert_fail",
+                "_GLOBAL_OFFSET_TABLE_",
+                "rawmemchr",
+                "realloc",
+                "__stack_chk_fail",
+                "__stpcpy",
+                "strcpy",
+                "strdup",
+                "strlen",
+                "strncpy"
+            ]
+        },
+        "nis_util.o": {
+            "Dependencies": [
+                "nis_xdr.o",
+                "nis_call.o",
+                "nis_local_names.o"
+            ],
+            "Defined symbols": [
+                "__nis_finddirectory"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__do_niscall2": "nis_call.o"
+                },
+                {
+                    "nis_local_host": "nis_local_names.o"
+                },
+                {
+                    "_xdr_fd_args": "nis_xdr.o"
+                },
+                {
+                    "_xdr_fd_result": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "calloc",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail"
+            ]
+        },
+        "nis_removemember.o": {
+            "Dependencies": [
+                "nis_modify.o",
+                "nis_lookup.o",
+                "nis_domain_of_r.o",
+                "nis_free.o",
+                "nis_subr.o"
+            ],
+            "Defined symbols": [
+                "nis_removemember"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "nis_domain_of_r": "nis_domain_of_r.o"
+                },
+                {
+                    "nis_freeresult": "nis_free.o"
+                },
+                {
+                    "nis_leaf_of_r": "nis_subr.o"
+                },
+                {
+                    "nis_lookup": "nis_lookup.o"
+                },
+                {
+                    "nis_modify": "nis_modify.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "rawmemchr",
+                "__stack_chk_fail",
+                "__stpcpy",
+                "strcmp",
+                "strcpy",
+                "strlen",
+                "strncpy"
+            ]
+        },
+        "nis_creategroup.o": {
+            "Dependencies": [
+                "nis_add.o",
+                "nis_domain_of_r.o",
+                "nis_defaults.o",
+                "nis_free.o",
+                "nis_subr.o"
+            ],
+            "Defined symbols": [
+                "nis_creategroup"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "nis_add": "nis_add.o"
+                },
+                {
+                    "__nis_default_access": "nis_defaults.o"
+                },
+                {
+                    "__nis_default_group": "nis_defaults.o"
+                },
+                {
+                    "__nis_default_owner": "nis_defaults.o"
+                },
+                {
+                    "nis_domain_of_r": "nis_domain_of_r.o"
+                },
+                {
+                    "nis_free_object": "nis_free.o"
+                },
+                {
+                    "nis_freeresult": "nis_free.o"
+                },
+                {
+                    "nis_leaf_of_r": "nis_subr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "calloc",
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail",
+                "__stpcpy",
+                "strcpy",
+                "strdup",
+                "strlen",
+                "time"
+            ]
+        },
+        "nis_destroygroup.o": {
+            "Dependencies": [
+                "nis_remove.o",
+                "nis_domain_of_r.o",
+                "nis_free.o",
+                "nis_subr.o"
+            ],
+            "Defined symbols": [
+                "nis_destroygroup"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "nis_domain_of_r": "nis_domain_of_r.o"
+                },
+                {
+                    "nis_freeresult": "nis_free.o"
+                },
+                {
+                    "nis_leaf_of_r": "nis_subr.o"
+                },
+                {
+                    "nis_remove": "nis_remove.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail",
+                "__stpcpy",
+                "strcpy",
+                "strlen"
+            ]
+        },
+        "nis_print_group_entry.o": {
+            "Dependencies": [
+                "nis_domain_of_r.o",
+                "nis_free.o",
+                "nis_subr.o",
+                "nis_lookup.o"
+            ],
+            "Defined symbols": [
+                "nis_print_group_entry"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "nis_domain_of_r": "nis_domain_of_r.o"
+                },
+                {
+                    "nis_freeresult": "nis_free.o"
+                },
+                {
+                    "nis_leaf_of_r": "nis_subr.o"
+                },
+                {
+                    "nis_lookup": "nis_lookup.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "__dcgettext",
+                "fputs",
+                "_GLOBAL_OFFSET_TABLE_",
+                "_libc_intl_domainname",
+                "printf",
+                "__stack_chk_fail",
+                "stdout",
+                "__stpcpy",
+                "strcpy",
+                "strlen"
+            ]
+        },
+        "nis_domain_of.o": {
+            "Dependencies": [
+                "nis_domain_of_r.o"
+            ],
+            "Defined symbols": [
+                "nis_domain_of",
+                "__nis_domain_of"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "nis_domain_of_r": "nis_domain_of_r.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "_GLOBAL_OFFSET_TABLE_",
+                "strchr"
+            ]
+        },
+        "nis_domain_of_r.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "nis_domain_of_r"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_",
+                "memcpy",
+                "strchr",
+                "strlen"
+            ]
+        },
+        "nis_modify.o": {
+            "Dependencies": [
+                "nis_clone_obj.o",
+                "nis_call.o",
+                "nis_local_names.o",
+                "nis_xdr.o",
+                "nis_domain_of_r.o",
+                "nis_subr.o"
+            ],
+            "Defined symbols": [
+                "nis_modify"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__do_niscall": "nis_call.o"
+                },
+                {
+                    "nis_clone_object": "nis_clone_obj.o"
+                },
+                {
+                    "nis_destroy_object": "nis_subr.o"
+                },
+                {
+                    "nis_domain_of_r": "nis_domain_of_r.o"
+                },
+                {
+                    "nis_leaf_of_r": "nis_subr.o"
+                },
+                {
+                    "nis_local_group": "nis_local_names.o"
+                },
+                {
+                    "nis_local_principal": "nis_local_names.o"
+                },
+                {
+                    "_xdr_nis_result": "nis_xdr.o"
+                },
+                {
+                    "_xdr_ns_request": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "calloc",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail",
+                "strlen"
+            ]
+        },
+        "nis_remove.o": {
+            "Dependencies": [
+                "nis_clone_obj.o",
+                "nis_xdr.o",
+                "nis_call.o",
+                "nis_subr.o"
+            ],
+            "Defined symbols": [
+                "nis_remove"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__do_niscall": "nis_call.o"
+                },
+                {
+                    "nis_clone_object": "nis_clone_obj.o"
+                },
+                {
+                    "nis_destroy_object": "nis_subr.o"
+                },
+                {
+                    "_xdr_nis_result": "nis_xdr.o"
+                },
+                {
+                    "_xdr_ns_request": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "calloc",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail"
+            ]
+        },
+        "nis_add.o": {
+            "Dependencies": [
+                "nis_clone_obj.o",
+                "nis_call.o",
+                "nis_local_names.o",
+                "nis_xdr.o",
+                "nis_domain_of_r.o",
+                "nis_subr.o"
+            ],
+            "Defined symbols": [
+                "nis_add"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__do_niscall": "nis_call.o"
+                },
+                {
+                    "nis_clone_object": "nis_clone_obj.o"
+                },
+                {
+                    "nis_destroy_object": "nis_subr.o"
+                },
+                {
+                    "nis_domain_of_r": "nis_domain_of_r.o"
+                },
+                {
+                    "nis_leaf_of_r": "nis_subr.o"
+                },
+                {
+                    "nis_local_group": "nis_local_names.o"
+                },
+                {
+                    "nis_local_principal": "nis_local_names.o"
+                },
+                {
+                    "_xdr_nis_result": "nis_xdr.o"
+                },
+                {
+                    "_xdr_ns_request": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "calloc",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail",
+                "strlen"
+            ]
+        },
+        "nis_defaults.o": {
+            "Dependencies": [
+                "nis_local_names.o"
+            ],
+            "Defined symbols": [
+                "__nis_default_owner",
+                "__nis_default_group",
+                "__nis_default_ttl",
+                "__nis_default_access"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "nis_local_group": "nis_local_names.o"
+                },
+                {
+                    "nis_local_principal": "nis_local_names.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "__assert_fail",
+                "free",
+                "getenv",
+                "_GLOBAL_OFFSET_TABLE_",
+                "memcpy",
+                "__stack_chk_fail",
+                "strchr",
+                "strdup",
+                "strlen",
+                "strncpy",
+                "strndup",
+                "strstr",
+                "strtol"
+            ]
+        },
+        "nis_findserv.o": {
+            "Dependencies": [
+                "nis_call.o"
+            ],
+            "Defined symbols": [
+                "__pmap_getnisport",
+                "__nis_findfastest"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "inetstr2int": "nis_call.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "authunix_create_default",
+                "clntudp_create",
+                "close",
+                "free",
+                "getpid",
+                "_GLOBAL_OFFSET_TABLE_",
+                "ioctl",
+                "__libc_rpc_getport",
+                "malloc",
+                "realloc",
+                "socket",
+                "__stack_chk_fail",
+                "time",
+                "xdr_void"
+            ]
+        },
+        "nis_callback.o": {
+            "Dependencies": [
+                "nis_xdr.o",
+                "nis_local_names.o"
+            ],
+            "Defined symbols": [
+                "__nis_do_callback",
+                "__nis_create_callback",
+                "__nis_destroy_callback"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "nis_local_principal": "nis_local_names.o"
+                },
+                {
+                    "xdr_cback_data": "nis_xdr.o"
+                },
+                {
+                    "_xdr_nis_error": "nis_xdr.o"
+                },
+                {
+                    "_xdr_nis_server": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "asprintf",
+                "calloc",
+                "close",
+                "__dcgettext",
+                "errno",
+                "exit",
+                "fputs",
+                "free",
+                "get_myaddress",
+                "getsockname",
+                "_GLOBAL_OFFSET_TABLE_",
+                "inet_ntoa",
+                "key_secretkey_is_set",
+                "_libc_intl_domainname",
+                "__poll",
+                "__rpc_thread_svc_max_pollfd",
+                "__rpc_thread_svc_pollfd",
+                "__stack_chk_fail",
+                "stderr",
+                "__stpcpy",
+                "strcpy",
+                "strdup",
+                "strlen",
+                "svcerr_decode",
+                "svcerr_noproc",
+                "svcerr_systemerr",
+                "svc_getreq_poll",
+                "svc_register",
+                "svc_sendreply",
+                "svctcp_create",
+                "svcudp_bufcreate",
+                "syslog",
+                "xdr_bool",
+                "xdr_free",
+                "xdr_netobj",
+                "xdr_void",
+                "xprt_unregister"
+            ]
+        },
+        "nis_clone_dir.o": {
+            "Dependencies": [
+                "nis_xdr.o"
+            ],
+            "Defined symbols": [
+                "nis_clone_directory"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "_xdr_directory_obj": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "calloc",
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail",
+                "xdrmem_create",
+                "xdr_sizeof"
+            ]
+        },
+        "nis_clone_obj.o": {
+            "Dependencies": [
+                "nis_xdr.o"
+            ],
+            "Defined symbols": [
+                "nis_clone_object"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "_xdr_nis_object": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "calloc",
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail",
+                "xdrmem_create",
+                "xdr_sizeof"
+            ]
+        },
+        "nis_clone_res.o": {
+            "Dependencies": [
+                "nis_xdr.o"
+            ],
+            "Defined symbols": [
+                "nis_clone_result"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "_xdr_nis_result": "nis_xdr.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "calloc",
+                "free",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail",
+                "xdrmem_create",
+                "xdr_sizeof"
+            ]
+        },
+        "nss-default.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "_nsl_default_nss"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "__ctype_b_loc",
+                "errno",
+                "fclose",
+                "fopen",
+                "free",
+                "__getdelim",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail",
+                "strncmp"
+            ]
+        }
+    }
+}
