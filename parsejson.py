@@ -2,20 +2,20 @@ import argparse
 import json
 
 def printLeaves(staticdep):
-    """Print object files in the given static library that do not depend on any
-    other object file also contained in this library.
+    """Print non-empty object files in the given static library that do not depend
+    on any other object file also contained in this library.
     """
     slibContent = staticdep["Content"]   # Content of the static library
     totalObj    = len(slibContent)       # Number of object file in the static library
     nbIndepObj  = 0                      # Number of independent object files
 
-    print("Object files in '{0}' that do not depend on any others are:"
+    print("Non-empty object files in '{0}' that do not depend on any others are:"
           .format(staticdep["Static library"]))
     for objectName, value in slibContent.items():
         if (value['Dependencies'] == []):    # If there are no dependencies, object file is printed
             nbIndepObj += 1
             print("- " + objectName)
-    print("which represents {0}/{1} of all object files or {2:.0f}%."
+    print("which represents {0}/{1} of all non-empty object files or {2:.0f}%."
           .format(nbIndepObj, totalObj, (nbIndepObj / totalObj) * 100))
 
 def verify(staticdep, objectlist, objectFiles):
@@ -73,7 +73,7 @@ def verify(staticdep, objectlist, objectFiles):
 def main():
     """The main function."""
     # Parse the argument line
-    parser = argparse.ArgumentParser(description="Parse a JSON output file to print object \
+    parser = argparse.ArgumentParser(description="Parse a JSON output file to print non-empty object \
                                      files that do not depend on any others (default behavior) \
                                      or verify if a list of object files is complete.")
     parser.add_argument("jsonfile", metavar="json_file",
@@ -87,6 +87,10 @@ def main():
     try:
         with open(jsonfile, 'r') as infile:
             staticdep = json.load(infile)         # Load the JSON file
+            # List empty object files
+            staticdep["Empty"]   = [key for key, val in staticdep["Content"].items() if val == "EMPTY"]
+            # Ignore empty object files
+            staticdep["Content"] = {key: val for key, val in staticdep["Content"].items() if val != "EMPTY"}
         if ("slib_analysis" not in staticdep):    # Check that format is correct
             raise json.JSONDecodeError("Not an analysis result", "", 0)
     except IOError as e:

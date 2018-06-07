@@ -133,7 +133,10 @@ def saveJSON(slib, outfile):
         attrdict["Defined symbols"]           = objectFile.getDefined()
         attrdict["Unresolved local symbols"]  = objectFile.getUnresLocal()
         attrdict["Unresolved global symbols"] = objectFile.getUnresGlobal()
-        contentdct[objectFile.getFilename()]  = attrdict
+        if (any(attrdict.values())):    # If object file has any symbol
+            contentdct[objectFile.getFilename()] = attrdict
+        else:    # Else we mark it as EMPTY
+            contentdct[objectFile.getFilename()] = "EMPTY"
     maindct["Content"] = contentdct
 
     # Write the JSON representation in a text file
@@ -188,7 +191,7 @@ def main():
 
     # Call "ar -t" on the static library, which lists its content
     try:
-        ar_output = subprocess.check_output(["ar", "-t", slib]).decode()
+        ar_output = subprocess.check_output(["ar", "-t", slib], stderr=subprocess.DEVNULL).decode()
     except subprocess.CalledProcessError as e:
         print("Could not execute '{0}'".format(' '.join(e.cmd)))
         return
@@ -197,7 +200,7 @@ def main():
 
     # Call "nm -s" on the static library, which lists symbols and index of the archive
     try:
-        nm_output = subprocess.check_output(["nm", "-s", slib]).decode()
+        nm_output = subprocess.check_output(["nm", "-s", slib], stderr=subprocess.DEVNULL).decode()
     except subprocess.CalledProcessError as e:
         print("Could not execute '{0}'".format(' '.join(e.cmd)))
         return
