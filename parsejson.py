@@ -5,9 +5,10 @@ def printLeaves(staticdep):
     """Print non-empty object files in the given static library that do not depend
     on any other object file also contained in this library.
     """
-    slibContent = staticdep["Content"]   # Content of the static library
-    totalObj    = len(slibContent)       # Number of object file in the static library
-    nbIndepObj  = 0                      # Number of independent object files
+    slibContent   = staticdep["Content"]      # Content of the static library
+    nbNonEmptyObj = len(slibContent)          # Number of object file in the static library
+    nbEmptyObj    = len(staticdep["Empty"])   # Number of empty object files
+    nbIndepObj    = 0                         # Number of independent object files
 
     print("Non-empty object files in '{0}' that do not depend on any others are:"
           .format(staticdep["Static library"]))
@@ -15,8 +16,27 @@ def printLeaves(staticdep):
         if (value['Dependencies'] == []):    # If there are no dependencies, object file is printed
             nbIndepObj += 1
             print("- " + objectName)
-    print("which represents {0}/{1} of all non-empty object files or {2:.0f}%."
-          .format(nbIndepObj, totalObj, (nbIndepObj / totalObj) * 100))
+    print("\nThis represents:")
+    print("- {0}/{1} of all non-empty object files or about {2:.0f}%."
+          .format(nbIndepObj, nbNonEmptyObj, (nbIndepObj / nbNonEmptyObj) * 100))
+    print("- {0}/{1} of all object files or about {2:.0f}%."
+          .format(nbIndepObj, nbNonEmptyObj + nbEmptyObj, (nbIndepObj / (nbEmptyObj + nbNonEmptyObj)) * 100))
+
+def printEmpty(staticdep):
+    """Print empty object files present in the given static library."""
+    emptyContent  = staticdep["Empty"]          # List of empty object files
+    nbNonEmptyObj = len(staticdep["Content"])   # Number of non-empty object files
+    nbEmptyObj    = len(emptyContent)           # Number of empty object files
+
+    if (emptyContent):
+        print("Empty object files in '{0}' are:"
+              .format(staticdep["Static library"]))
+        for objectName in emptyContent:
+            print("- " + objectName)
+        print("which represents {0}/{1} of all object files or about {2:.0f}%."
+              .format(nbEmptyObj, nbEmptyObj + nbNonEmptyObj, (nbEmptyObj / (nbNonEmptyObj + nbEmptyObj)) * 100))
+    else:
+        print("There is no empty object file in {0}".format(staticdep["Static library"]))
 
 def verify(staticdep, objectlist, objectFiles):
     """Verify that there are no missing dependencies in a list of object file.
@@ -78,10 +98,13 @@ def main():
                                      or verify if a list of object files is complete.")
     parser.add_argument("jsonfile", metavar="json_file",
                         help="the JSON file to parse")
+    parser.add_argument("-e", action="store_true",
+                        help="list of empty object files")
     parser.add_argument("-v", metavar="object_list",
                         help="list of object files to verify (one per line in a separate txt file)")
     jsonfile   = parser.parse_args().jsonfile   # The name of the json output file
     objectlist = parser.parse_args().v          # Filename of the object file list
+    emptylist  = parser.parse_args().e          # Boolean, print empty object files or not
 
     # Retrieve the JSON analysis as a dictionnary
     try:
@@ -102,7 +125,10 @@ def main():
 
     # Decide what to print according to the given arguments
     if (objectlist == None):    # Print independent object files if no option '-v'
-        printLeaves(staticdep)
+        if (emptylist):
+            printEmpty(staticdep)
+        else:
+            printLeaves(staticdep)
     else:                       # Else verify that a list of object file is complete
         try:
             objectFiles = []   # The list of object file to verify
