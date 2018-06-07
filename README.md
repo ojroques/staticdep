@@ -29,9 +29,9 @@ To get help, you can use the option `-h`:
 
 Note that those two tools have been implemented using **python 3.6** on a Linux machine. Tests show that they run fine with python 2.7 but you should favor python 3+ anyway.
 
-#### Analysis
+### Analysis
 
-To run the analysis on a static library `libfoo.a` (result saved as `libfoo.json` where `libfoo.a` is located by default):
+To run the analysis on a static library `libfoo.a` (by default, the result is saved as `libfoo.json` where `libfoo.a` is located):
 ```sh
 python3 staticdep.py libfoo.a
 ```
@@ -46,9 +46,9 @@ A summary of the dependencies is printed when option `-s` is set:
 python3 staticdep.py libfoo.a -s
 ```
 
-#### Parsing
+### Parsing
 
-By default, this tool prints object files listed in the static library that do not depend on any others. If analysis result is stored in `libfoo.json`:
+By default, `parsejson.py` prints object files listed in the static library that do not depend on any others. If analysis result is stored as `libfoo.json`:
 ```sh
 python3 parsejson.py libfoo.json
 ```
