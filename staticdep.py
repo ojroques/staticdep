@@ -165,7 +165,7 @@ def printSummary(slib):
         line         = "- {0}".format(filename) + " " * (maxLength - len(filename))
         line        += " <- "
         if (dependencies == []):
-            line += "No dependencies"
+            line += "No dependencies (or empty)"
         else:
             line += ", ".join(dependencies)
         print(line)
@@ -174,7 +174,7 @@ def main():
     """The main function."""
     # Parse the argument line
     parser = argparse.ArgumentParser(description=
-                                     "List the object file dependencies of a static library")
+                                     "List object file dependencies of a static library")
     parser.add_argument("slib", metavar="static_library",
                         help="the static library to analyze")
     parser.add_argument("-o", metavar="outfile",

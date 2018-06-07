@@ -4,12 +4,12 @@
     "Content": {
         "nptl-init.o": {
             "Dependencies": [
-                "pthread_create.o",
-                "sigaction.o",
                 "pthread_once.o",
-                "lowlevellock.o",
+                "sigaction.o",
+                "pthread_create.o",
                 "unwind.o",
-                "vars.o"
+                "vars.o",
+                "lowlevellock.o"
             ],
             "Defined symbols": [
                 "__xidcmd",
@@ -100,20 +100,20 @@
         },
         "pthread_create.o": {
             "Dependencies": [
-                "events.o",
-                "pthread_key_delete.o",
-                "pthread_mutex_lock.o",
-                "pthread_mutex_trylock.o",
-                "nptl-init.o",
-                "pthread_key_create.o",
                 "pthread_once.o",
-                "pthread_mutex_unlock.o",
+                "events.o",
+                "pthread_mutex_trylock.o",
                 "pthread_setspecific.o",
-                "lowlevellock.o",
-                "cancellation.o",
-                "pthread_cancel.o",
+                "nptl-init.o",
                 "pthread_getspecific.o",
-                "vars.o"
+                "lowlevellock.o",
+                "pthread_mutex_lock.o",
+                "pthread_key_delete.o",
+                "pthread_mutex_unlock.o",
+                "vars.o",
+                "cancellation.o",
+                "pthread_key_create.o",
+                "pthread_cancel.o"
             ],
             "Defined symbols": [
                 "__free_stacks",
@@ -373,10 +373,10 @@
         },
         "pthread_join_common.o": {
             "Dependencies": [
-                "cleanup_compat.o",
                 "pthread_create.o",
-                "lowlevellock.o",
-                "cancellation.o"
+                "cancellation.o",
+                "cleanup_compat.o",
+                "lowlevellock.o"
             ],
             "Defined symbols": [
                 "__pthread_timedjoin_ex"
@@ -406,12 +406,7 @@
                 "__stack_chk_fail"
             ]
         },
-        "compat-pthread_self.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
+        "compat-pthread_self.o": "EMPTY",
         "pthread_equal.o": {
             "Dependencies": [],
             "Defined symbols": [
@@ -797,9 +792,9 @@
             "Dependencies": [
                 "tpp.o",
                 "pause.o",
+                "vars.o",
                 "elision-lock.o",
-                "lowlevellock.o",
-                "vars.o"
+                "lowlevellock.o"
             ],
             "Defined symbols": [
                 "__pthread_mutex_lock",
@@ -871,12 +866,12 @@
         },
         "pthread_mutex_timedlock.o": {
             "Dependencies": [
-                "tpp.o",
-                "elision-lock.o",
-                "nanosleep.o",
                 "elision-timed.o",
-                "lowlevellock.o",
-                "vars.o"
+                "tpp.o",
+                "nanosleep.o",
+                "vars.o",
+                "elision-lock.o",
+                "lowlevellock.o"
             ],
             "Defined symbols": [
                 "__pthread_mutex_timedlock",
@@ -918,8 +913,8 @@
         "pthread_mutex_unlock.o": {
             "Dependencies": [
                 "tpp.o",
-                "lowlevellock.o",
-                "elision-unlock.o"
+                "elision-unlock.o",
+                "lowlevellock.o"
             ],
             "Defined symbols": [
                 "__pthread_mutex_unlock_usercnt",
@@ -945,8 +940,8 @@
         "pthread_mutex_cond_lock.o": {
             "Dependencies": [
                 "tpp.o",
-                "pause.o",
                 "lowlevellock.o",
+                "pause.o",
                 "vars.o"
             ],
             "Defined symbols": [
@@ -1196,12 +1191,12 @@
         },
         "pthread_cond_wait.o": {
             "Dependencies": [
+                "pthread_mutex_cond_lock.o",
                 "cleanup_compat.o",
-                "pthread_mutex_unlock.o",
                 "pthread_cond_broadcast.o",
-                "cancellation.o",
                 "pthread_cond_signal.o",
-                "pthread_mutex_cond_lock.o"
+                "pthread_mutex_unlock.o",
+                "cancellation.o"
             ],
             "Defined symbols": [
                 "__pthread_cond_wait",
@@ -1266,42 +1261,12 @@
                 "__libc_fatal"
             ]
         },
-        "old_pthread_cond_init.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
-        "old_pthread_cond_destroy.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
-        "old_pthread_cond_wait.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
-        "old_pthread_cond_timedwait.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
-        "old_pthread_cond_signal.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
-        "old_pthread_cond_broadcast.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
+        "old_pthread_cond_init.o": "EMPTY",
+        "old_pthread_cond_destroy.o": "EMPTY",
+        "old_pthread_cond_wait.o": "EMPTY",
+        "old_pthread_cond_timedwait.o": "EMPTY",
+        "old_pthread_cond_signal.o": "EMPTY",
+        "old_pthread_cond_broadcast.o": "EMPTY",
         "pthread_condattr_init.o": {
             "Dependencies": [],
             "Defined symbols": [
@@ -1352,12 +1317,7 @@
             "Unresolved local symbols": [],
             "Unresolved global symbols": []
         },
-        "pthread_spin_init.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
+        "pthread_spin_init.o": "EMPTY",
         "pthread_spin_destroy.o": {
             "Dependencies": [],
             "Defined symbols": [
@@ -1651,12 +1611,7 @@
                 "__stack_chk_fail"
             ]
         },
-        "old_pthread_atfork.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
+        "old_pthread_atfork.o": "EMPTY",
         "pthread_atfork.o": {
             "Dependencies": [],
             "Defined symbols": [
@@ -1743,11 +1698,11 @@
         },
         "sem_open.o": {
             "Dependencies": [
-                "write.o",
                 "close.o",
+                "shm-directory.o",
+                "write.o",
                 "open64.o",
-                "lowlevellock.o",
-                "shm-directory.o"
+                "lowlevellock.o"
             ],
             "Defined symbols": [
                 "__sem_mappings_lock",
@@ -1798,8 +1753,8 @@
         },
         "sem_close.o": {
             "Dependencies": [
-                "lowlevellock.o",
-                "sem_open.o"
+                "sem_open.o",
+                "lowlevellock.o"
             ],
             "Defined symbols": [
                 "sem_close"
@@ -1864,9 +1819,9 @@
         },
         "sem_wait.o": {
             "Dependencies": [
-                "pthread_testcancel.o",
+                "cancellation.o",
                 "cleanup_compat.o",
-                "cancellation.o"
+                "pthread_testcancel.o"
             ],
             "Defined symbols": [
                 "__new_sem_wait",
@@ -1900,9 +1855,9 @@
         },
         "sem_timedwait.o": {
             "Dependencies": [
-                "pthread_testcancel.o",
+                "cancellation.o",
                 "cleanup_compat.o",
-                "cancellation.o"
+                "pthread_testcancel.o"
             ],
             "Defined symbols": [
                 "sem_timedwait"
@@ -2016,12 +1971,7 @@
                 "_Unwind_GetCFA"
             ]
         },
-        "pt-longjmp.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
+        "pt-longjmp.o": "EMPTY",
         "pt-cleanup.o": {
             "Dependencies": [],
             "Defined symbols": [
@@ -2061,34 +2011,14 @@
                 "__gettimeofday"
             ]
         },
-        "lll_timedlock_wait.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
-        "lll_timedwait_tid.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
-        "pt-fork.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
-        "pt-vfork.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
+        "lll_timedlock_wait.o": "EMPTY",
+        "lll_timedwait_tid.o": "EMPTY",
+        "pt-fork.o": "EMPTY",
+        "pt-vfork.o": "EMPTY",
         "write.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_write",
@@ -2114,8 +2044,8 @@
         },
         "read.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_read",
@@ -2141,8 +2071,8 @@
         },
         "close.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__close",
@@ -2168,8 +2098,8 @@
         },
         "fcntl.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_fcntl",
@@ -2196,8 +2126,8 @@
         },
         "accept.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_accept",
@@ -2221,8 +2151,8 @@
         },
         "connect.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_connect",
@@ -2247,8 +2177,8 @@
         },
         "recv.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_recv",
@@ -2273,8 +2203,8 @@
         },
         "recvfrom.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_recvfrom",
@@ -2299,8 +2229,8 @@
         },
         "send.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_send",
@@ -2325,8 +2255,8 @@
         },
         "sendto.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_sendto",
@@ -2351,8 +2281,8 @@
         },
         "fsync.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "fsync"
@@ -2373,12 +2303,7 @@
                 "_GLOBAL_OFFSET_TABLE_"
             ]
         },
-        "lseek.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
+        "lseek.o": "EMPTY",
         "lseek64.o": {
             "Dependencies": [],
             "Defined symbols": [
@@ -2398,8 +2323,8 @@
         },
         "msync.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "msync"
@@ -2422,8 +2347,8 @@
         },
         "nanosleep.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__nanosleep",
@@ -2446,16 +2371,11 @@
                 "_GLOBAL_OFFSET_TABLE_"
             ]
         },
-        "open.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
+        "open.o": "EMPTY",
         "open64.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_open64",
@@ -2486,8 +2406,8 @@
         },
         "pause.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_pause",
@@ -2510,16 +2430,11 @@
                 "_GLOBAL_OFFSET_TABLE_"
             ]
         },
-        "pread.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
+        "pread.o": "EMPTY",
         "pread64.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_pread64",
@@ -2545,16 +2460,11 @@
                 "_GLOBAL_OFFSET_TABLE_"
             ]
         },
-        "pwrite.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
+        "pwrite.o": "EMPTY",
         "pwrite64.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_pwrite64",
@@ -2582,8 +2492,8 @@
         },
         "tcdrain.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_tcdrain",
@@ -2607,8 +2517,8 @@
         },
         "wait.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_wait",
@@ -2633,8 +2543,8 @@
         },
         "waitpid.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__waitpid",
@@ -2659,8 +2569,8 @@
         },
         "msgrcv.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_msgrcv",
@@ -2684,8 +2594,8 @@
         },
         "msgsnd.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_msgsnd",
@@ -2733,8 +2643,8 @@
         },
         "sigsuspend.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__sigsuspend",
@@ -2759,8 +2669,8 @@
         },
         "recvmsg.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_recvmsg",
@@ -2785,8 +2695,8 @@
         },
         "sendmsg.o": {
             "Dependencies": [
-                "vars.o",
-                "cancellation.o"
+                "cancellation.o",
+                "vars.o"
             ],
             "Defined symbols": [
                 "__libc_sendmsg",
@@ -2822,12 +2732,7 @@
                 "__stack_chk_fail"
             ]
         },
-        "pt-system.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
+        "pt-system.o": "EMPTY",
         "flockfile.o": {
             "Dependencies": [
                 "lowlevellock.o"
@@ -2906,12 +2811,7 @@
                 "__resp"
             ]
         },
-        "pthread_kill_other_threads.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
+        "pthread_kill_other_threads.o": "EMPTY",
         "pthread_getaffinity.o": {
             "Dependencies": [],
             "Defined symbols": [
@@ -3121,8 +3021,8 @@
         "pthread_setname.o": {
             "Dependencies": [
                 "write.o",
-                "close.o",
-                "open64.o"
+                "open64.o",
+                "close.o"
             ],
             "Defined symbols": [
                 "pthread_setname_np"
@@ -3149,9 +3049,9 @@
         },
         "pthread_getname.o": {
             "Dependencies": [
-                "close.o",
+                "read.o",
                 "open64.o",
-                "read.o"
+                "close.o"
             ],
             "Defined symbols": [
                 "pthread_getname_np"

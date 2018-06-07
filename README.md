@@ -58,6 +58,11 @@ You can also verify that a list of object files (in a separate txt file, one fil
 python3 parsejson.py libfoo.json -v object_list
 ```
 
+If the static library contains any empty object files, you can print them with:
+```sh
+python3 parsejson.py libfoo.json -e
+```
+
 ## JSON result
 Here is a sample of a JSON analysis result:
 ```json
@@ -82,8 +87,7 @@ Here is a sample of a JSON analysis result:
                 "puts"
             ]
         },
-        "file11.o": {
-        }
+        "file11.o": "EMPTY"
     }
 }
 ```
@@ -94,6 +98,7 @@ It contains 3 main fields:
 * `Content` lists each object file present in the static library
 
 Then in `Content`, for each object file `foo.o`:
+* If no symbol has been found, the object file is labelled *EMPTY*
 * `Dependencies` is the list of object files from which `foo.o` depends on
 * `Defined symbols` is the list of symbols defined in `foo.o`
 * `Unresolved local symbols` lists symbols that are not defined in `foo.o` but are present in other object files from the static library

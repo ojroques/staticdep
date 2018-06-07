@@ -156,8 +156,8 @@
         },
         "nis_subr.o": {
             "Dependencies": [
-                "nis_free.o",
-                "nis_local_names.o"
+                "nis_local_names.o",
+                "nis_free.o"
             ],
             "Defined symbols": [
                 "nis_leaf_of",
@@ -357,14 +357,14 @@
         },
         "nis_call.o": {
             "Dependencies": [
+                "nis_util.o",
+                "nis_xdr.o",
+                "nis_subr.o",
                 "nis_free.o",
                 "nis_callback.o",
-                "nis_file.o",
-                "nis_findserv.o",
-                "nis_xdr.o",
                 "nis_domain_of.o",
-                "nis_util.o",
-                "nis_subr.o"
+                "nis_findserv.o",
+                "nis_file.o"
             ],
             "Defined symbols": [
                 "inetstr2int",
@@ -446,11 +446,11 @@
         },
         "nis_lookup.o": {
             "Dependencies": [
+                "nis_xdr.o",
+                "nis_subr.o",
                 "nis_free.o",
                 "nis_call.o",
-                "nis_xdr.o",
-                "nis_domain_of.o",
-                "nis_subr.o"
+                "nis_domain_of.o"
             ],
             "Defined symbols": [
                 "nis_lookup"
@@ -503,13 +503,13 @@
         "nis_table.o": {
             "Dependencies": [
                 "nis_clone_obj.o",
-                "nis_callback.o",
-                "nis_call.o",
-                "nis_local_names.o",
                 "nis_xdr.o",
-                "nis_domain_of_r.o",
+                "nis_subr.o",
                 "nis_free.o",
-                "nis_subr.o"
+                "nis_call.o",
+                "nis_callback.o",
+                "nis_domain_of_r.o",
+                "nis_local_names.o"
             ],
             "Defined symbols": [
                 "__create_ib_request",
@@ -638,8 +638,8 @@
         },
         "nis_server.o": {
             "Dependencies": [
-                "nis_xdr.o",
-                "nis_call.o"
+                "nis_call.o",
+                "nis_xdr.o"
             ],
             "Defined symbols": [
                 "nis_servstate",
@@ -663,9 +663,9 @@
         "nis_ping.o": {
             "Dependencies": [
                 "nis_xdr.o",
+                "nis_lookup.o",
                 "nis_call.o",
-                "nis_free.o",
-                "nis_lookup.o"
+                "nis_free.o"
             ],
             "Defined symbols": [
                 "nis_ping"
@@ -694,9 +694,9 @@
         "nis_checkpoint.o": {
             "Dependencies": [
                 "nis_xdr.o",
+                "nis_lookup.o",
                 "nis_call.o",
-                "nis_free.o",
-                "nis_lookup.o"
+                "nis_free.o"
             ],
             "Defined symbols": [
                 "nis_checkpoint"
@@ -727,8 +727,8 @@
         },
         "nis_mkdir.o": {
             "Dependencies": [
-                "nis_xdr.o",
-                "nis_call.o"
+                "nis_call.o",
+                "nis_xdr.o"
             ],
             "Defined symbols": [
                 "nis_mkdir"
@@ -754,8 +754,8 @@
         },
         "nis_rmdir.o": {
             "Dependencies": [
-                "nis_xdr.o",
-                "nis_call.o"
+                "nis_call.o",
+                "nis_xdr.o"
             ],
             "Defined symbols": [
                 "nis_rmdir"
@@ -778,9 +778,9 @@
         },
         "nis_getservlist.o": {
             "Dependencies": [
+                "nis_lookup.o",
                 "nis_xdr.o",
-                "nis_free.o",
-                "nis_lookup.o"
+                "nis_free.o"
             ],
             "Defined symbols": [
                 "nis_getservlist",
@@ -809,10 +809,10 @@
         },
         "nis_verifygroup.o": {
             "Dependencies": [
+                "nis_lookup.o",
                 "nis_domain_of_r.o",
-                "nis_free.o",
                 "nis_subr.o",
-                "nis_lookup.o"
+                "nis_free.o"
             ],
             "Defined symbols": [
                 "nis_verifygroup"
@@ -841,10 +841,10 @@
         },
         "nis_ismember.o": {
             "Dependencies": [
+                "nis_lookup.o",
                 "nis_domain_of_r.o",
-                "nis_free.o",
                 "nis_subr.o",
-                "nis_lookup.o"
+                "nis_free.o"
             ],
             "Defined symbols": [
                 "nis_ismember"
@@ -874,11 +874,11 @@
         },
         "nis_addmember.o": {
             "Dependencies": [
-                "nis_modify.o",
-                "nis_lookup.o",
-                "nis_domain_of_r.o",
+                "nis_subr.o",
                 "nis_free.o",
-                "nis_subr.o"
+                "nis_lookup.o",
+                "nis_modify.o",
+                "nis_domain_of_r.o"
             ],
             "Defined symbols": [
                 "nis_addmember"
@@ -915,9 +915,9 @@
         },
         "nis_util.o": {
             "Dependencies": [
-                "nis_xdr.o",
+                "nis_local_names.o",
                 "nis_call.o",
-                "nis_local_names.o"
+                "nis_xdr.o"
             ],
             "Defined symbols": [
                 "__nis_finddirectory"
@@ -944,11 +944,11 @@
         },
         "nis_removemember.o": {
             "Dependencies": [
-                "nis_modify.o",
-                "nis_lookup.o",
-                "nis_domain_of_r.o",
+                "nis_subr.o",
                 "nis_free.o",
-                "nis_subr.o"
+                "nis_lookup.o",
+                "nis_modify.o",
+                "nis_domain_of_r.o"
             ],
             "Defined symbols": [
                 "nis_removemember"
@@ -984,11 +984,11 @@
         },
         "nis_creategroup.o": {
             "Dependencies": [
-                "nis_add.o",
-                "nis_domain_of_r.o",
                 "nis_defaults.o",
+                "nis_add.o",
+                "nis_subr.o",
                 "nis_free.o",
-                "nis_subr.o"
+                "nis_domain_of_r.o"
             ],
             "Defined symbols": [
                 "nis_creategroup"
@@ -1035,8 +1035,8 @@
             "Dependencies": [
                 "nis_remove.o",
                 "nis_domain_of_r.o",
-                "nis_free.o",
-                "nis_subr.o"
+                "nis_subr.o",
+                "nis_free.o"
             ],
             "Defined symbols": [
                 "nis_destroygroup"
@@ -1065,10 +1065,10 @@
         },
         "nis_print_group_entry.o": {
             "Dependencies": [
+                "nis_lookup.o",
                 "nis_domain_of_r.o",
-                "nis_free.o",
                 "nis_subr.o",
-                "nis_lookup.o"
+                "nis_free.o"
             ],
             "Defined symbols": [
                 "nis_print_group_entry"
@@ -1135,11 +1135,11 @@
         "nis_modify.o": {
             "Dependencies": [
                 "nis_clone_obj.o",
-                "nis_call.o",
-                "nis_local_names.o",
                 "nis_xdr.o",
+                "nis_subr.o",
+                "nis_call.o",
                 "nis_domain_of_r.o",
-                "nis_subr.o"
+                "nis_local_names.o"
             ],
             "Defined symbols": [
                 "nis_modify"
@@ -1183,9 +1183,9 @@
         "nis_remove.o": {
             "Dependencies": [
                 "nis_clone_obj.o",
-                "nis_xdr.o",
+                "nis_subr.o",
                 "nis_call.o",
-                "nis_subr.o"
+                "nis_xdr.o"
             ],
             "Defined symbols": [
                 "nis_remove"
@@ -1216,11 +1216,11 @@
         "nis_add.o": {
             "Dependencies": [
                 "nis_clone_obj.o",
-                "nis_call.o",
-                "nis_local_names.o",
                 "nis_xdr.o",
+                "nis_subr.o",
+                "nis_call.o",
                 "nis_domain_of_r.o",
-                "nis_subr.o"
+                "nis_local_names.o"
             ],
             "Defined symbols": [
                 "nis_add"
@@ -1327,8 +1327,8 @@
         },
         "nis_callback.o": {
             "Dependencies": [
-                "nis_xdr.o",
-                "nis_local_names.o"
+                "nis_local_names.o",
+                "nis_xdr.o"
             ],
             "Defined symbols": [
                 "__nis_do_callback",

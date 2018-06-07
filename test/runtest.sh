@@ -13,6 +13,9 @@ echo "2. LIST OBJECT FILES WITHOUT DEPENDENCIES"
 python3 ../$parse $libtest.json
 echo
 
-echo "3. VERIFY THAT A LIST OF OBJECT FILES IS COMPLETE"
-python3 ../$parse $libtest.json -v $objectlist
+echo "3. LIST EMPTY OBJECT FILES"
+python3 ../$parse $libtest.json -e
 echo
+
+echo "4. VERIFY THAT A LIST OF OBJECT FILES IS COMPLETE"
+python3 ../$parse $libtest.json -v $objectlist

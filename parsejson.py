@@ -6,7 +6,7 @@ def printLeaves(staticdep):
     on any other object file also contained in this library.
     """
     slibContent   = staticdep["Content"]      # Content of the static library
-    nbNonEmptyObj = len(slibContent)          # Number of object file in the static library
+    nbNonEmptyObj = len(slibContent)          # Number of object files in the static library
     nbEmptyObj    = len(staticdep["Empty"])   # Number of empty object files
     nbIndepObj    = 0                         # Number of independent object files
 
@@ -16,6 +16,8 @@ def printLeaves(staticdep):
         if (value['Dependencies'] == []):    # If there are no dependencies, object file is printed
             nbIndepObj += 1
             print("- " + objectName)
+
+    # Some statistics
     print("\nThis represents:")
     print("- {0}/{1} of all non-empty object files or about {2:.0f}%."
           .format(nbIndepObj, nbNonEmptyObj, (nbIndepObj / nbNonEmptyObj) * 100))
@@ -33,7 +35,7 @@ def printEmpty(staticdep):
               .format(staticdep["Static library"]))
         for objectName in emptyContent:
             print("- " + objectName)
-        print("which represents {0}/{1} of all object files or about {2:.0f}%."
+        print("\nThis represents {0}/{1} of all object files or about {2:.0f}%."
               .format(nbEmptyObj, nbEmptyObj + nbNonEmptyObj, (nbEmptyObj / (nbNonEmptyObj + nbEmptyObj)) * 100))
     else:
         print("There is no empty object file in {0}".format(staticdep["Static library"]))
@@ -99,7 +101,7 @@ def main():
     parser.add_argument("jsonfile", metavar="json_file",
                         help="the JSON file to parse")
     parser.add_argument("-e", action="store_true",
-                        help="list of empty object files")
+                        help="list of empty object files if there are any")
     parser.add_argument("-v", metavar="object_list",
                         help="list of object files to verify (one per line in a separate txt file)")
     jsonfile   = parser.parse_args().jsonfile   # The name of the json output file
@@ -110,10 +112,6 @@ def main():
     try:
         with open(jsonfile, 'r') as infile:
             staticdep = json.load(infile)         # Load the JSON file
-            # List empty object files
-            staticdep["Empty"]   = [key for key, val in staticdep["Content"].items() if val == "EMPTY"]
-            # Ignore empty object files
-            staticdep["Content"] = {key: val for key, val in staticdep["Content"].items() if val != "EMPTY"}
         if ("slib_analysis" not in staticdep):    # Check that format is correct
             raise json.JSONDecodeError("Not an analysis result", "", 0)
     except IOError as e:
@@ -122,16 +120,20 @@ def main():
     except json.JSONDecodeError as e:
         print("Not a valid JSON document: {0}".format(e.msg))
         return
+    # List empty object files
+    staticdep["Empty"]   = [key for key, val in staticdep["Content"].items() if val == "EMPTY"]
+    # Ignore empty object files
+    staticdep["Content"] = {key: val for key, val in staticdep["Content"].items() if val != "EMPTY"}
 
     # Decide what to print according to the given arguments
-    if (objectlist == None):    # Print independent object files if no option '-v'
+    if (objectlist == None):    # Print independent or empty object files if option '-v' missing
         if (emptylist):
             printEmpty(staticdep)
         else:
             printLeaves(staticdep)
-    else:                       # Else verify that a list of object file is complete
+    else:                       # Else verify that a list of object files is complete
         try:
-            objectFiles = []   # The list of object file to verify
+            objectFiles = []   # The list of object files to verify
             with open(objectlist, 'r') as objfile:
                 for line in objfile:
                     objectFiles.append(line.strip())

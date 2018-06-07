@@ -143,12 +143,7 @@
                 "_GLOBAL_OFFSET_TABLE_"
             ]
         },
-        "aio_read64.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
+        "aio_read64.o": "EMPTY",
         "aio_return.o": {
             "Dependencies": [],
             "Defined symbols": [
@@ -160,8 +155,8 @@
         },
         "aio_suspend.o": {
             "Dependencies": [
-                "librt-cancellation.o",
-                "aio_misc.o"
+                "aio_misc.o",
+                "librt-cancellation.o"
             ],
             "Defined symbols": [
                 "aio_suspend",
@@ -211,12 +206,7 @@
                 "_GLOBAL_OFFSET_TABLE_"
             ]
         },
-        "aio_write64.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
+        "aio_write64.o": "EMPTY",
         "lio_listio.o": {
             "Dependencies": [
                 "aio_misc.o",
@@ -250,12 +240,7 @@
                 "__stack_chk_fail"
             ]
         },
-        "lio_listio64.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
+        "lio_listio64.o": "EMPTY",
         "aio_sigqueue.o": {
             "Dependencies": [],
             "Defined symbols": [
@@ -601,12 +586,7 @@
                 "_GLOBAL_OFFSET_TABLE_"
             ]
         },
-        "clock-compat.o": {
-            "Dependencies": [],
-            "Defined symbols": [],
-            "Unresolved local symbols": [],
-            "Unresolved global symbols": []
-        },
+        "clock-compat.o": "EMPTY",
         "timer_routines.o": {
             "Dependencies": [
                 "librt-cancellation.o"

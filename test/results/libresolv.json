@@ -4,8 +4,8 @@
     "Content": {
         "res_comp.o": {
             "Dependencies": [
-                "ns_netint.o",
-                "ns_name.o"
+                "ns_name.o",
+                "ns_netint.o"
             ],
             "Defined symbols": [
                 "__dn_expand",
@@ -53,10 +53,10 @@
         },
         "res_debug.o": {
             "Dependencies": [
-                "ns_ttl.o",
-                "ns_print.o",
                 "ns_parse.o",
-                "res_comp.o"
+                "ns_print.o",
+                "res_comp.o",
+                "ns_ttl.o"
             ],
             "Defined symbols": [
                 "__p_default_section_syms",
@@ -163,8 +163,8 @@
         "res_query.o": {
             "Dependencies": [
                 "res_mkquery.o",
-                "res_send.o",
-                "ns_samedomain.o"
+                "ns_samedomain.o",
+                "res_send.o"
             ],
             "Defined symbols": [
                 "__res_context_query",
@@ -218,8 +218,8 @@
         },
         "res_send.o": {
             "Dependencies": [
-                "ns_samedomain.o",
-                "res_comp.o"
+                "res_comp.o",
+                "ns_samedomain.o"
             ],
             "Defined symbols": [
                 "res_ourserver_p",
@@ -267,3 +267,225 @@
         },
         "inet_net_ntop.o": {
             "Dependencies": [],
+            "Defined symbols": [
+                "inet_net_ntop"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_",
+                "sprintf"
+            ]
+        },
+        "inet_net_pton.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "inet_net_pton"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "__assert_fail",
+                "__ctype_b_loc",
+                "__ctype_tolower_loc",
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__rawmemchr"
+            ]
+        },
+        "inet_neta.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "inet_neta"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_",
+                "sprintf"
+            ]
+        },
+        "base64.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "__b64_ntop",
+                "__b64_pton"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "__ctype_b_loc",
+                "_GLOBAL_OFFSET_TABLE_",
+                "strchr"
+            ]
+        },
+        "ns_parse.o": {
+            "Dependencies": [
+                "res_comp.o"
+            ],
+            "Defined symbols": [
+                "ns_msg_getflag",
+                "_ns_flagdata",
+                "ns_skiprr",
+                "ns_initparse",
+                "ns_parserr"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__dn_expand": "res_comp.o"
+                },
+                {
+                    "__dn_skipname": "res_comp.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_"
+            ]
+        },
+        "ns_name.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "ns_name_ntop",
+                "__ns_name_ntop",
+                "ns_name_pton",
+                "ns_name_ntol",
+                "ns_name_unpack",
+                "__ns_name_unpack",
+                "ns_name_pack",
+                "ns_name_uncompress",
+                "ns_name_compress",
+                "ns_name_rollback",
+                "ns_name_skip"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "__ctype_b_loc",
+                "__ctype_tolower_loc",
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_",
+                "__stack_chk_fail",
+                "strchr"
+            ]
+        },
+        "ns_netint.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "ns_get16",
+                "__ns_get16",
+                "ns_get32",
+                "__ns_get32",
+                "ns_put16",
+                "ns_put32"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": []
+        },
+        "ns_ttl.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "ns_format_ttl",
+                "ns_parse_ttl"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "__ctype_b_loc",
+                "__ctype_tolower_loc",
+                "__ctype_toupper_loc",
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_",
+                "sprintf",
+                "__stack_chk_fail",
+                "strcpy"
+            ]
+        },
+        "ns_print.o": {
+            "Dependencies": [
+                "ns_netint.o",
+                "res_debug.o",
+                "base64.o",
+                "ns_ttl.o",
+                "res_comp.o",
+                "ns_samedomain.o"
+            ],
+            "Defined symbols": [
+                "ns_sprintrrf",
+                "ns_sprintrr"
+            ],
+            "Unresolved local symbols": [
+                {
+                    "__b64_ntop": "base64.o"
+                },
+                {
+                    "__dn_expand": "res_comp.o"
+                },
+                {
+                    "__loc_ntoa": "res_debug.o"
+                },
+                {
+                    "ns_format_ttl": "ns_ttl.o"
+                },
+                {
+                    "ns_get16": "ns_netint.o"
+                },
+                {
+                    "ns_get32": "ns_netint.o"
+                },
+                {
+                    "ns_samename": "ns_samedomain.o"
+                },
+                {
+                    "__p_class": "res_debug.o"
+                },
+                {
+                    "__p_type": "res_debug.o"
+                }
+            ],
+            "Unresolved global symbols": [
+                "__assert_fail",
+                "__ctype_b_loc",
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_",
+                "inet_nsap_ntoa",
+                "inet_ntop",
+                "memcpy",
+                "snprintf",
+                "sprintf",
+                "__stack_chk_fail",
+                "strchr",
+                "strlen"
+            ]
+        },
+        "ns_samedomain.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "ns_samedomain",
+                "ns_makecanon",
+                "ns_samename",
+                "ns_subdomain"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "errno",
+                "_GLOBAL_OFFSET_TABLE_",
+                "memcpy",
+                "__stack_chk_fail",
+                "strcasecmp",
+                "strlen",
+                "strncasecmp"
+            ]
+        },
+        "ns_date.o": {
+            "Dependencies": [],
+            "Defined symbols": [
+                "ns_datetosecs"
+            ],
+            "Unresolved local symbols": [],
+            "Unresolved global symbols": [
+                "__ctype_b_loc",
+                "_GLOBAL_OFFSET_TABLE_",
+                "strlen"
+            ]
+        },
+        "compat-hooks.o": "EMPTY",
+        "compat-gethnamaddr.o": "EMPTY"
+    }
+}

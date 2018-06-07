@@ -4,11 +4,11 @@
     "Content": {
         "crypt-entry.o": {
             "Dependencies": [
-                "crypt_util.o",
-                "md5-crypt.o",
                 "crypt.o",
                 "sha256-crypt.o",
-                "sha512-crypt.o"
+                "md5-crypt.o",
+                "sha512-crypt.o",
+                "crypt_util.o"
             ],
             "Defined symbols": [
                 "__crypt_r",
