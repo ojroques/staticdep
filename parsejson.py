@@ -133,7 +133,7 @@ def main():
             printLeaves(staticdep)
     else:                       # Else verify that a list of object files is complete
         try:
-            objectFiles = []   # The list of object files to verify
+            objectFiles = []    # The list of object files to verify
             with open(objectlist, 'r') as objfile:
                 for line in objfile:
                     objectFiles.append(line.strip())
