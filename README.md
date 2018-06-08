@@ -9,7 +9,7 @@
     - [Analysis](#analysis)
     - [Parsing](#parsing)
 - [JSON result](#json-result)
-- [Examples](#examples)
+- [Examples and results](#examples-and-results)
 
 ## Installation
 
@@ -104,10 +104,10 @@ Then in `Content`, for each object file `foo.o`:
 * `Unresolved local symbols` lists symbols that are not defined in `foo.o` but are present in other object files from the static library
 * `Unresolved global symbols` lists symbols that are not defined in `foo.o` nor in other object files from the static library
 
-## Examples
-Tools have been tested on several popular static libraries. JSON results can be found in *test/results*. 
+## Examples and results
 
-A static library `libtest.a` to test the tools is also present in *test/*. It contains 5 object files:
+### Test library and screenshots
+A static library `libtest.a` to test the tools is provided in *test/*. It contains 5 object files:
 * `file1.o` has no dependency
 * `file11.o` and `file12.o` both depend on `file1.o`
 * `file111.o` depends on `file11.o`
@@ -121,3 +121,17 @@ You can use the bash script `test/runtest.sh` to test all options at once. Below
 ![Independent object files](screenshots/independent.png)
 #### Verify that a list of object files is complete
 ![Verification of completeness](screenshots/verify.png)
+
+### Analysis results of some popular libraries
+The tools have been tested on several popular static libraries. JSON results can be found in *test/results*. Here is a recap chart:
+
+|                  | Object files | Local symbols    | Independent objects | Empty objects |
+| ---------------- | ------------:| ----------------:| -------------------:| -------------:|
+| **libc.a**       | 1690         | 3684             | 247 (15%)           | 84 (5%)       |
+| **libcrypt.a**   | 9            | 40               | 4 (44%)             | 0             |
+| **libpthread.a** | 200          | 448              | 102 (51%)           | 20 (10%)      |
+| **libutil.a**    | 6            | 6                | 5 (83%)             | 0             |
+| **libresolv.a    | 9            | 9                | 9 (100%)            | 0             |
+| **librt.a**      | 30           | 64               | 13 (43%)            | 4 (12%)       |
+| **libnsl.a**     | 39           | 146              | 6 (15%)             | 0             |
+| **libdl.a**      | 9            | 9                | 9 (100%)            | 0             |
