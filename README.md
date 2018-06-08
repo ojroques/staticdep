@@ -126,12 +126,12 @@ You can use the bash script `test/runtest.sh` to test all options at once. Below
 The tools have been tested on several popular static libraries. JSON results can be found in *test/results*. Here is a recap chart:
 
 |                  | Object files | Local symbols    | Independent objects | Empty objects |
-| ---------------- | ------------:| ----------------:| -------------------:| -------------:|
+| ---------------- |:------------ |:---------------- |:------------------- |:------------- |
 | **libc.a**       | 1690         | 3684             | 247 (15%)           | 84 (5%)       |
 | **libcrypt.a**   | 9            | 40               | 4 (44%)             | 0             |
 | **libpthread.a** | 200          | 448              | 102 (51%)           | 20 (10%)      |
 | **libutil.a**    | 6            | 6                | 5 (83%)             | 0             |
-| **libresolv.a    | 9            | 9                | 9 (100%)            | 0             |
+| **libresolv.a**  | 9            | 9                | 9 (100%)            | 0             |
 | **librt.a**      | 30           | 64               | 13 (43%)            | 4 (12%)       |
 | **libnsl.a**     | 39           | 146              | 6 (15%)             | 0             |
 | **libdl.a**      | 9            | 9                | 9 (100%)            | 0             |
